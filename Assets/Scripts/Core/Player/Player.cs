@@ -1,14 +1,11 @@
 using UnityEngine;
 
-namespace LunarflyArts
+public class Player : MonoBehaviour
 {
-    public class Player : MonoBehaviour
-    {
-        public InputManager inputManager;
+    public InputManager inputManager;
 
-        private void Start()
-        {
-            inputManager = FindObjectOfType<InputManager>();
-        }
+    private void Start()
+    {
+        inputManager = FindObjectOfType<InputManager>();
     }
 }

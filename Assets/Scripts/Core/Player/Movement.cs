@@ -41,7 +41,7 @@ namespace LunarflyArts
             if (isDashing) return;
 
             horizontalMovement = inputManager.MovementInput;
-            if(horizontalMovement == 0)
+            if (horizontalMovement == 0)
             {
                 animator.SetBool("isRunning", false);
             }
@@ -58,7 +58,7 @@ namespace LunarflyArts
                 coyoteTimeCounter -= Time.deltaTime;
             }
 
-            if(inputManager.JumpPressed)
+            if (inputManager.JumpPressed)
             {
                 jumpBufferCounter = jumpBufferTime;
             }
@@ -67,26 +67,34 @@ namespace LunarflyArts
                 jumpBufferCounter -= Time.deltaTime;
             }
 
-            if(coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping)
+            if (coyoteTimeCounter > 0f && jumpBufferCounter > 0f && !isJumping)
             {
                 HandleJumpWithCoyoteTime();
             }
 
-            if(inputManager.JumpReleased && rb.velocity.y > 0f)
+            if (inputManager.JumpReleased && rb.velocity.y > 0f)
             {
                 HandleQuickJump();
             }
-            if(inputManager.DashInput && canDash)
+            if (inputManager.DashInput && canDash)
             {
                 StartCoroutine(Dash());
             }
-            Flip();
         }
 
         private void FixedUpdate()
         {
             if (isDashing) return;
             HandleMovement();
+
+            if (horizontalMovement > 0 && !isFacingRight)
+            {
+                Flip();
+            }
+            else if (horizontalMovement < 0 && isFacingRight)
+            {
+                Flip();
+            }
         }
         private void HandleMovement()
         {
@@ -106,14 +114,19 @@ namespace LunarflyArts
         }
         private void Flip()
         {
-            if (isFacingRight && horizontalMovement > 0f || 
-                !isFacingRight && horizontalMovement < 0f)
+            if(isFacingRight)
             {
-                Vector3 localScale = transform.localScale;
+                Vector3 rotate = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+                transform.rotation = Quaternion.Euler(rotate);
                 isFacingRight = !isFacingRight;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
             }
+            else
+            {
+                Vector3 rotate = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+                transform.rotation = Quaternion.Euler(rotate);
+                isFacingRight = !isFacingRight;
+            } 
+                
         }
         private IEnumerator Dash()
         {
