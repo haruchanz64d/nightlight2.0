@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
+
 namespace LunarflyArts
 {
     [RequireComponent(typeof(CapsuleCollider2D), typeof(Collision), typeof(Rigidbody2D))]
@@ -41,14 +43,16 @@ namespace LunarflyArts
             if (isDashing) return;
 
             horizontalMovement = inputManager.MovementInput;
+
             if (horizontalMovement == 0)
             {
-                animator.SetBool("isRunning", false);
+                animator.Play("Idle");
             }
             else
             {
-                animator.SetBool("isRunning", true);
+                animator.Play("Run");
             }
+
             if (collision.IsGrounded())
             {
                 coyoteTimeCounter = coyoteTime;
@@ -80,22 +84,15 @@ namespace LunarflyArts
             {
                 StartCoroutine(Dash());
             }
+            Flip();
         }
 
         private void FixedUpdate()
         {
             if (isDashing) return;
             HandleMovement();
-
-            if (horizontalMovement > 0 && !isFacingRight)
-            {
-                Flip();
-            }
-            else if (horizontalMovement < 0 && isFacingRight)
-            {
-                Flip();
-            }
         }
+
         private void HandleMovement()
         {
             rb.velocity = new Vector2(horizontalMovement * movementSpeed, rb.velocity.y);
@@ -112,24 +109,22 @@ namespace LunarflyArts
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
         private void Flip()
         {
-            if(isFacingRight)
+            if (isFacingRight && horizontalMovement > 0f ||
+                !isFacingRight && horizontalMovement < 0f)
             {
-                Vector3 rotate = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-                transform.rotation = Quaternion.Euler(rotate);
+                Vector3 localScale = transform.localScale;
                 isFacingRight = !isFacingRight;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
             }
-            else
-            {
-                Vector3 rotate = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
-                transform.rotation = Quaternion.Euler(rotate);
-                isFacingRight = !isFacingRight;
-            } 
-                
         }
+
         private IEnumerator Dash()
         {
+            animator.Play("Dash");
             canDash = false;
             isDashing = true;
             float originalGravity = rb.gravityScale;
@@ -142,6 +137,7 @@ namespace LunarflyArts
             isDashing = false;
             yield return new WaitForSeconds(dashingCooldown);
             canDash = true;
+            animator.Play("Idle");
         }
 
         private IEnumerator JumpCooldown()
@@ -149,6 +145,31 @@ namespace LunarflyArts
             isJumping = true;
             yield return new WaitForSeconds(0.4f);
             isJumping = false;
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            horizontalMovement = context.ReadValue<float>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                jumpBufferCounter = jumpBufferTime;
+            }
+            else if (context.canceled)
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }
+        }
+
+        public void OnDash(InputAction.CallbackContext context)
+        {
+            if (context.performed && canDash)
+            {
+                StartCoroutine(Dash());
+            }
         }
     }
 }
