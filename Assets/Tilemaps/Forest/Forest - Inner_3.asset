@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Forest - Inner_3
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -8963044575913886348, guid: 3fc23cb5418a94043b9d776fd1f14e1e,
+  m_Sprite: {fileID: -8963044575913886348, guid: 662b53c40207f7941bc39433c24d090d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
