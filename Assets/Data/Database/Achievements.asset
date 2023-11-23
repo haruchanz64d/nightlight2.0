@@ -14,122 +14,362 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievement:
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0
   - achievementID: 
-    achievementTitle: 
+    title: 
     description: 
+    difficulty: 0
+    condition: 0
+    currentValue: 0
+    maxValue: 0
+    trigger: 0
+    hidden: 0

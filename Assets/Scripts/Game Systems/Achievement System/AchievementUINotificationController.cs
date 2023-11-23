@@ -15,7 +15,7 @@ public class AchievementUINotificationController : MonoBehaviour
     }
     public void ShowAchievementNotification(Achievement achievement)
     {
-        achievementTitle.SetText(achievement.achievementTitle);
+        achievementTitle.SetText(achievement.title);
         m_animator.SetTrigger("Show Notification");
     }
 }

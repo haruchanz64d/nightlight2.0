@@ -11,21 +11,21 @@ namespace LunarflyArts
         private Rigidbody2D rb;
         private float horizontalMovement;
         private Collision collision;
-        private float movementSpeed = 10f;
-        private float jumpForce = 12f;
+        private float movementSpeed = 12f;
+        private float jumpForce = 20f;
         private bool isFacingRight = false;
 
         private bool canDash = true;
         public bool ResetDash() { return canDash = true; }
         private bool isDashing;
         private float dashingForce = 25f;
-        private float dashingTime = 0.25f;
-        private float dashingCooldown = 1f;
+        private float dashingTime = 0.20f;
+        private float dashingCooldown = 0.10f;
 
         private bool isJumping;
-        private float coyoteTime = 0.2f;
+        private float coyoteTime = 0.10f;
         private float coyoteTimeCounter;
-        private float jumpBufferTime = 0.2f;
+        private float jumpBufferTime = 0.10f;
         private float jumpBufferCounter;
 
         private TrailRenderer tr;
@@ -42,8 +42,8 @@ namespace LunarflyArts
         {
             if (isDashing) return;
 
-            horizontalMovement = inputManager.MovementInput;
-
+            //horizontalMovement = inputManager.MovementInput;
+            horizontalMovement = Input.GetAxis("Horizontal");
             if (horizontalMovement == 0)
             {
                 animator.Play("Idle");
@@ -62,7 +62,16 @@ namespace LunarflyArts
                 coyoteTimeCounter -= Time.deltaTime;
             }
 
-            if (inputManager.JumpPressed)
+            /*if (inputManager.JumpPressed)
+            {
+                jumpBufferCounter = jumpBufferTime;
+            }
+            else
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }*/
+
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 jumpBufferCounter = jumpBufferTime;
             }
@@ -76,11 +85,22 @@ namespace LunarflyArts
                 HandleJumpWithCoyoteTime();
             }
 
-            if (inputManager.JumpReleased && rb.velocity.y > 0f)
+            /*if (inputManager.JumpReleased && rb.velocity.y > 0f)
             {
                 HandleQuickJump();
-            }
-            if (inputManager.DashInput && canDash)
+            }*/
+
+            if(Input.GetKeyUp(KeyCode.C))
+            {
+                HandleQuickJump();
+            }    
+
+            /*if (inputManager.DashInput && canDash)
+            {
+                StartCoroutine(Dash());
+            }*/
+
+            if(Input.GetKeyDown(KeyCode.X))
             {
                 StartCoroutine(Dash());
             }
@@ -145,31 +165,6 @@ namespace LunarflyArts
             isJumping = true;
             yield return new WaitForSeconds(0.4f);
             isJumping = false;
-        }
-
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            horizontalMovement = context.ReadValue<float>();
-        }
-
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                jumpBufferCounter = jumpBufferTime;
-            }
-            else if (context.canceled)
-            {
-                jumpBufferCounter -= Time.deltaTime;
-            }
-        }
-
-        public void OnDash(InputAction.CallbackContext context)
-        {
-            if (context.performed && canDash)
-            {
-                StartCoroutine(Dash());
-            }
         }
     }
 }

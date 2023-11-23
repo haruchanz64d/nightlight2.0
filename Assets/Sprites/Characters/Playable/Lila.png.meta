@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 22cd671c0b3243f4199d84230e82ee61
+guid: fc9e71879b63ec84bb3a95f8dfc15f02
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1140678964973161228
-    second: Lila_0
+      213: 4706643263293145910
+    second: Lila - New_0
   - first:
-      213: -8797339998487422693
-    second: Lila_1
+      213: -3511989374327387389
+    second: Lila - New_1
   - first:
-      213: 5641327624469966504
-    second: Lila_2
+      213: -3019667175018639658
+    second: Lila - New_2
   - first:
-      213: 5369716339186892912
-    second: Lila_3
+      213: 1090661698186494169
+    second: Lila - New_3
   - first:
-      213: -8715344633610967154
-    second: Lila_4
+      213: -359144402280151852
+    second: Lila - New_4
   - first:
-      213: 4624392287384036819
-    second: Lila_5
+      213: -2042666906409564274
+    second: Lila - New_5
   - first:
-      213: -8504869291369235225
-    second: Lila_6
+      213: -7886022218086615456
+    second: Lila - New_6
   - first:
-      213: -1066571603065291297
-    second: Lila_7
+      213: 1650194544856734143
+    second: Lila - New_7
   - first:
-      213: 3283560352455332500
-    second: Lila_8
+      213: -1368374783586347529
+    second: Lila - New_8
   - first:
-      213: -2235291128607471682
-    second: Lila_9
+      213: -794915056003125301
+    second: Lila - New_9
   - first:
-      213: -2243820653060201507
-    second: Lila_10
+      213: -5106488589665516200
+    second: Lila - New_10
   - first:
-      213: 1569903887056112810
-    second: Lila_11
+      213: 5370117832388795606
+    second: Lila - New_11
   - first:
-      213: -1426936671296213619
-    second: Lila_12
+      213: -6292214107133520110
+    second: Lila - New_12
   - first:
-      213: -726298868641483845
-    second: Lila_13
+      213: -8199187652347425331
+    second: Lila - New_13
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -74,7 +74,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -88,7 +88,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -120,7 +120,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -134,11 +134,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lila_0
+      name: Lila - New_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 529
+        x: 513
+        y: 1152
         width: 188
         height: 210
       alignment: 0
@@ -148,18 +148,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0b4cfd997184df00800000000000000
-      internalID: 1140678964973161228
+      spriteID: 633c2117c1b515140800000000000000
+      internalID: 4706643263293145910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_1
+      name: Lila - New_1
       rect:
         serializedVersion: 2
-        x: 249
-        y: 529
+        x: 711
+        y: 1152
         width: 203
         height: 190
       alignment: 0
@@ -169,18 +169,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1952d5b1e199e580800000000000000
-      internalID: -8797339998487422693
+      spriteID: 30b05487548e24fc0800000000000000
+      internalID: -3511989374327387389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_2
+      name: Lila - New_2
       rect:
         serializedVersion: 2
-        x: 458
-        y: 528
+        x: 920
+        y: 1151
         width: 219
         height: 185
       alignment: 0
@@ -190,18 +190,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ae612ed5950a4e40800000000000000
-      internalID: 5641327624469966504
+      spriteID: 6de4b1504bcf716d0800000000000000
+      internalID: -3019667175018639658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_3
+      name: Lila - New_3
       rect:
         serializedVersion: 2
-        x: 677
-        y: 529
+        x: 1139
+        y: 1152
         width: 188
         height: 210
       alignment: 0
@@ -211,18 +211,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07088dd7f80158a40800000000000000
-      internalID: 5369716339186892912
+      spriteID: 9d0c782390fc22f00800000000000000
+      internalID: 1090661698186494169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_4
+      name: Lila - New_4
       rect:
         serializedVersion: 2
-        x: 61
-        y: 285
+        x: 523
+        y: 908
         width: 150
         height: 205
       alignment: 0
@@ -232,18 +232,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e87e28a4b30ec0780800000000000000
-      internalID: -8715344633610967154
+      spriteID: 4d48507a110140bf0800000000000000
+      internalID: -359144402280151852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_5
+      name: Lila - New_5
       rect:
         serializedVersion: 2
-        x: 232
-        y: 285
+        x: 694
+        y: 908
         width: 140
         height: 205
       alignment: 0
@@ -253,18 +253,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d5e497c8442d2040800000000000000
-      internalID: 4624392287384036819
+      spriteID: e870309654df6a3e0800000000000000
+      internalID: -2042666906409564274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_6
+      name: Lila - New_6
       rect:
         serializedVersion: 2
-        x: 390
-        y: 284
+        x: 852
+        y: 907
         width: 144
         height: 216
       alignment: 0
@@ -274,18 +274,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ecfec2b072a8f980800000000000000
-      internalID: -8504869291369235225
+      spriteID: 066fb1813983f8290800000000000000
+      internalID: -7886022218086615456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_7
+      name: Lila - New_7
       rect:
         serializedVersion: 2
-        x: 545
-        y: 284
+        x: 1007
+        y: 907
         width: 141
         height: 217
       alignment: 0
@@ -295,18 +295,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdd36c727c6c231f0800000000000000
-      internalID: -1066571603065291297
+      spriteID: fb91978023ba6e610800000000000000
+      internalID: 1650194544856734143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_8
+      name: Lila - New_8
       rect:
         serializedVersion: 2
-        x: 696
-        y: 285
+        x: 1158
+        y: 908
         width: 149
         height: 220
       alignment: 0
@@ -316,18 +316,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49218a65ebc819d20800000000000000
-      internalID: 3283560352455332500
+      spriteID: 7f5dbb0626e820de0800000000000000
+      internalID: -1368374783586347529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_9
+      name: Lila - New_9
       rect:
         serializedVersion: 2
-        x: 856
-        y: 281
+        x: 1318
+        y: 904
         width: 143
         height: 216
       alignment: 0
@@ -337,18 +337,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb705c5cf86aaf0e0800000000000000
-      internalID: -2235291128607471682
+      spriteID: bcfe25cd7f4e7f4f0800000000000000
+      internalID: -794915056003125301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_10
+      name: Lila - New_10
       rect:
         serializedVersion: 2
-        x: 57
-        y: 62
+        x: 519
+        y: 685
         width: 134
         height: 215
       alignment: 0
@@ -358,18 +358,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd369aa11095cd0e0800000000000000
-      internalID: -2243820653060201507
+      spriteID: 855c66bdeab1229b0800000000000000
+      internalID: -5106488589665516200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_11
+      name: Lila - New_11
       rect:
         serializedVersion: 2
-        x: 200
-        y: 62
+        x: 662
+        y: 685
         width: 134
         height: 205
       alignment: 0
@@ -379,18 +379,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aac0c7f744b69c510800000000000000
-      internalID: 1569903887056112810
+      spriteID: 6dc568967bd768a40800000000000000
+      internalID: 5370117832388795606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_12
+      name: Lila - New_12
       rect:
         serializedVersion: 2
-        x: 345
-        y: 62
+        x: 807
+        y: 685
         width: 134
         height: 215
       alignment: 0
@@ -400,18 +400,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8d296e58a0823ce0800000000000000
-      internalID: -1426936671296213619
+      spriteID: 217da9d6b909da8a0800000000000000
+      internalID: -6292214107133520110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lila_13
+      name: Lila - New_13
       rect:
         serializedVersion: 2
-        x: 488
-        y: 62
+        x: 950
+        y: 685
         width: 134
         height: 205
       alignment: 0
@@ -421,8 +421,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb33bdde60babe5f0800000000000000
-      internalID: -726298868641483845
+      spriteID: dcd00177542a63e80800000000000000
+      internalID: -8199187652347425331
       vertices: []
       indices: 
       edges: []
