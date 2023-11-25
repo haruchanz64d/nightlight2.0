@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AchivementManager : MonoBehaviour
+public class AchievementManager : MonoBehaviour
 {
     public AchievementDatabase achievementDatabase;
     public AchievementUINotificationController achievementUINotificationController;

@@ -18,14 +18,14 @@ namespace LunarflyArts
         private bool canDash = true;
         public bool ResetDash() { return canDash = true; }
         private bool isDashing;
-        private float dashingForce = 25f;
-        private float dashingTime = 0.20f;
-        private float dashingCooldown = 0.10f;
+        private float dashingForce = 24f;
+        private float dashingTime = 0.2f;
+        private float dashingCooldown = 1f;
 
         private bool isJumping;
-        private float coyoteTime = 0.10f;
+        private float coyoteTime = 0.2f;
         private float coyoteTimeCounter;
-        private float jumpBufferTime = 0.10f;
+        private float jumpBufferTime = 0.2f;
         private float jumpBufferCounter;
 
         private TrailRenderer tr;
@@ -42,7 +42,6 @@ namespace LunarflyArts
         {
             if (isDashing) return;
 
-            //horizontalMovement = inputManager.MovementInput;
             horizontalMovement = Input.GetAxis("Horizontal");
             if (horizontalMovement == 0)
             {
@@ -62,15 +61,6 @@ namespace LunarflyArts
                 coyoteTimeCounter -= Time.deltaTime;
             }
 
-            /*if (inputManager.JumpPressed)
-            {
-                jumpBufferCounter = jumpBufferTime;
-            }
-            else
-            {
-                jumpBufferCounter -= Time.deltaTime;
-            }*/
-
             if (Input.GetKeyDown(KeyCode.C))
             {
                 jumpBufferCounter = jumpBufferTime;
@@ -85,22 +75,13 @@ namespace LunarflyArts
                 HandleJumpWithCoyoteTime();
             }
 
-            /*if (inputManager.JumpReleased && rb.velocity.y > 0f)
+            if (Input.GetKeyUp(KeyCode.C) && rb.velocity.y > 0f)
             {
                 HandleQuickJump();
-            }*/
+            }
 
-            if(Input.GetKeyUp(KeyCode.C))
-            {
-                HandleQuickJump();
-            }    
 
-            /*if (inputManager.DashInput && canDash)
-            {
-                StartCoroutine(Dash());
-            }*/
-
-            if(Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.X) && canDash)
             {
                 StartCoroutine(Dash());
             }

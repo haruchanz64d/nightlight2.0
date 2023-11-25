@@ -43,10 +43,10 @@ public class InputManager : MonoBehaviour
     private void UpdateInput()
     {
         MovementInput = movementAction.ReadValue<float>();
-        JumpPressed = jumpAction.WasPressedThisFrame();
+        JumpPressed = jumpAction.triggered;
         JumpHeld = jumpAction.WasPerformedThisFrame();
         JumpReleased = jumpAction.WasReleasedThisFrame();
-        DashInput = dashAction.WasPressedThisFrame();
+        DashInput = dashAction.triggered;
         PauseInput = pauseAction.WasPressedThisFrame();
         InteractInput = interactAction.WasPressedThisFrame();
     }
