@@ -1,16 +1,15 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
     public AchievementDatabase achievementDatabase;
-    public AchievementUINotificationController achievementUINotificationController;
-    public Achievements achievements;
+    public AchievementNotificationController achievementNotificationController;
 
-    public void ShowAchievementNotification()
+    public void ShowNotification(Achievements achievements)
     {
-        Achievement achievement = achievementDatabase.achievement[(int) achievements];
-        achievementUINotificationController.ShowAchievementNotification(achievement);
+        Achievement achievement = achievementDatabase.achievements[(int)achievements];
+        achievementNotificationController.ShowNotification(achievement);
     }
 }

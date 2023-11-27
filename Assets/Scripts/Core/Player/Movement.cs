@@ -7,6 +7,7 @@ namespace LunarflyArts
     [RequireComponent(typeof(CapsuleCollider2D), typeof(Collision), typeof(Rigidbody2D))]
     public class Movement : Player
     {
+        private PlayerAchievementTracker tracker;
         private Animator animator;
         private Rigidbody2D rb;
         private float horizontalMovement;
@@ -36,6 +37,7 @@ namespace LunarflyArts
             tr = GetComponent<TrailRenderer>();
             collision = GetComponent<Collision>();
             animator = GetComponent<Animator>();
+            tracker = GetComponent<PlayerAchievementTracker>();
         }
 
         private void Update()
