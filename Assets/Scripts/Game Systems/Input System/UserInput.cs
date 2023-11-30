@@ -6,7 +6,7 @@ public class UserInput : MonoBehaviour
 {
     public static UserInput instance;
     [HideInInspector] public InputActions inputActions;
-    public Vector2 movementInput;
+    [HideInInspector] public Vector2 movementInput;
     private void Awake()
     {
         if(instance == null)
