@@ -1,25 +1,7 @@
 fileFormatVersion: 2
-guid: 2fbbf445e97de2546ad2e20d9f93be83
+guid: 8f4ae739c7765b24387952a99edf070f
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -6533126929417295477
-    second: Gruzzer_Explode _0
-  - first:
-      213: 6381581893860819951
-    second: Gruzzer_Explode _1
-  - first:
-      213: 1329335837157988181
-    second: Gruzzer_Explode _2
-  - first:
-      213: -6036849517159336919
-    second: Gruzzer_Explode _3
-  - first:
-      213: -9148896116663263780
-    second: Gruzzer_Explode _4
-  - first:
-      213: -1820182755367566809
-    second: Gruzzer_Explode _5
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,13 +92,181 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gruzzer_Explode _0
+      name: Gruzzer_Explosion_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 720
+        y: 140
+        width: 199
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17952e5d8aa4cb1e0800000000000000
+      internalID: -2180786030550820495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_7
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 145
+        width: 160
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447925b8272f274e0800000000000000
+      internalID: -1985257911939328188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_12
+      rect:
+        serializedVersion: 2
+        x: 2866
+        y: 55
+        width: 286
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db6294d5104b6150800000000000000
+      internalID: 5866853402085059542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_25
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 97
+        width: 302
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f185625e5f51e7b0800000000000000
+      internalID: -5196767636294893064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_26
+      rect:
+        serializedVersion: 2
+        x: 3521
+        y: 55
+        width: 276
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807d1fceea0048210800000000000000
+      internalID: 1334192140908091144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_30
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 119
+        width: 250
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3644ad4f26d7bd840800000000000000
+      internalID: 5249927654598657123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_33
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 135
+        width: 223
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2397ca9810f9c260800000000000000
+      internalID: 7118484674502431530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_38
+      rect:
+        serializedVersion: 2
+        x: 3787
+        y: 180
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a67462ea981c2a2a0800000000000000
+      internalID: -6727602096261675158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gruzzer_Explosion_41
+      rect:
+        serializedVersion: 2
+        x: 2950
         y: 95
-        width: 437
-        height: 154
+        width: 5
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,113 +274,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b892b83fbaba555a0800000000000000
-      internalID: -6533126929417295477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gruzzer_Explode _1
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 96
-        width: 385
-        height: 165
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe383a0ebeeef8850800000000000000
-      internalID: 6381581893860819951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gruzzer_Explode _2
-      rect:
-        serializedVersion: 2
-        x: 863
-        y: 101
-        width: 403
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5579ff896efb27210800000000000000
-      internalID: 1329335837157988181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gruzzer_Explode _3
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 93
-        width: 381
-        height: 188
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 924ba37495dc83ca0800000000000000
-      internalID: -6036849517159336919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gruzzer_Explode _4
-      rect:
-        serializedVersion: 2
-        x: 1701
-        y: 75
-        width: 216
-        height: 197
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cddd55f6477980180800000000000000
-      internalID: -9148896116663263780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gruzzer_Explode _5
-      rect:
-        serializedVersion: 2
-        x: 1938
-        y: 53
-        width: 222
-        height: 254
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72246008d696db6e0800000000000000
-      internalID: -1820182755367566809
+      spriteID: f46d450370cee2840800000000000000
+      internalID: 5201354135279294031
       vertices: []
       indices: 
       edges: []

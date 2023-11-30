@@ -4,7 +4,8 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
     
-    public float MovementInput { get; private set; }
+    public Vector2 MovementInput { get; private set; }
+    public bool AttackPressed { get; private set; }
     public bool JumpPressed { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool JumpReleased { get; private set; }
@@ -15,6 +16,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
 
     private InputAction movementAction;
+    private InputAction attackAction;
     private InputAction jumpAction;
     private InputAction dashAction;
     private InputAction pauseAction;
@@ -34,7 +36,8 @@ public class InputManager : MonoBehaviour
 
     private void SetupInputActions()
     {
-        movementAction = playerInput.actions["Movement"];
+        movementAction = playerInput.actions["Move"];
+        attackAction = playerInput.actions["Attack"];
         jumpAction = playerInput.actions["Jump"];
         dashAction = playerInput.actions["Dash"];
         pauseAction = playerInput.actions["Pause"];
@@ -42,8 +45,9 @@ public class InputManager : MonoBehaviour
     }
     private void UpdateInput()
     {
-        MovementInput = movementAction.ReadValue<float>();
-        JumpPressed = jumpAction.triggered;
+        MovementInput = movementAction.ReadValue<Vector2>();
+        AttackPressed = attackAction.triggered;
+        JumpPressed = jumpAction.WasPressedThisFrame();
         JumpHeld = jumpAction.WasPerformedThisFrame();
         JumpReleased = jumpAction.WasReleasedThisFrame();
         DashInput = dashAction.triggered;
