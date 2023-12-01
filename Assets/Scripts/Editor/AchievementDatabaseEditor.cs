@@ -23,14 +23,14 @@ public class AchievementDatabaseEditor : Editor
 
     private void GenerateEnum()
     {
-        string filePath = Path.Combine(Application.dataPath + "/Data/Database/", "Achievements.cs");
+        string filePath = Path.Combine(Application.dataPath + "/Data/Data/", "Achievements.cs");
         string code = "public enum Achievements {";
         foreach(Achievement achievement in achievementDatabase.achievements)
         {
-            code += achievement.achievementID + ",";
+            code += achievement.achievementID + "," + "\n";
         }
         code += "}";
         File.WriteAllText(filePath, code);
-        AssetDatabase.ImportAsset("Assets/Data/Database/Achievements.cs");
+        AssetDatabase.ImportAsset("Assets/Data/Data/Achievements.cs");
     }
 }

@@ -13,12 +13,6 @@ public class Player : MonoBehaviour
     private bool isJumping;
     private bool isFalling;
     [SerializeField] private float maxFallSpeed = 12f;
-    [Header("Dash")]
-    [SerializeField] private bool canDash = true;
-    private bool isDashing;
-    [SerializeField] private float dashingForce = 32f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashingCooldown = 1f;
     [Header("Ground Check")]
     [SerializeField] private float extraHeight = 0.25f;
     [SerializeField] private LayerMask layerMask;
@@ -28,16 +22,14 @@ public class Player : MonoBehaviour
     
     private Rigidbody2D rb;
     private Animator animator;
-    private Collider2D collider2D;
+    private new Collider2D collider2D;
     private RaycastHit2D raycastHit2D;
-    private TrailRenderer trailRenderer;
     private CameraFollow cameraFollow;
    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        trailRenderer = GetComponent<TrailRenderer>();
         collider2D = GetComponent<Collider2D>();
         StartDirectionCheck();
 
