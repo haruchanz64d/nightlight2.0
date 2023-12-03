@@ -229,18 +229,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.6796875}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2.09375, y: 3.359375}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.77, y: 4.19}
     newSize: {x: 2.09375, y: 3.359375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.09375, y: 3.359375}
+  m_Size: {x: 2.77, y: 4.19}
   m_EdgeRadius: 0
 --- !u!50 &4090547698741929686
 Rigidbody2D:
@@ -276,14 +276,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7.5
+  isFacingRight: 0
   jumpForce: 12
   jumpTime: 0.35
   maxFallSpeed: 12
-  canDash: 1
-  dashingForce: 32
-  dashingTime: 0.2
-  dashingCooldown: 1
   extraHeight: 0.25
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  cameraObject: {fileID: 0}

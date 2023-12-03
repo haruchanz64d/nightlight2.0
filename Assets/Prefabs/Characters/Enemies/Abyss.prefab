@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5691648836795108969}
   m_Layer: 0
   m_Name: Abyss
-  m_TagString: Shadow Lila
+  m_TagString: Abyss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,13 +72,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1683640406264817505, guid: fbd50ef667fd6d7458d6d331df81ba7b,
+  m_Sprite: {fileID: -3271991409265505379, guid: 6aa8270f25a704c479dd84dafdff7c76,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.34, y: 3.48}
+  m_Size: {x: 2.6, y: 4.03}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

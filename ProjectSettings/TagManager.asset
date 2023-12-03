@@ -6,10 +6,11 @@ TagManager:
   tags:
   - Kill Plane
   - Dash Crystal
-  - Shadow Lila
   - Scuttle
   - Stingbite
   - Beelzebub
+  - Abyss
+  - Magus
   layers:
   - Default
   - TransparentFX

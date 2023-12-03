@@ -1,0 +1,445 @@
+fileFormatVersion: 2
+guid: 6aa8270f25a704c479dd84dafdff7c76
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6703580897671325991
+    second: Shadow Lila Sprite_0
+  - first:
+      213: 8250474886847142650
+    second: Shadow Lila Sprite_1
+  - first:
+      213: 1546641770549423801
+    second: Shadow Lila Sprite_2
+  - first:
+      213: 684150540699063120
+    second: Shadow Lila Sprite_3
+  - first:
+      213: 7514098333032190471
+    second: Shadow Lila Sprite_4
+  - first:
+      213: 6755623397393444657
+    second: Shadow Lila Sprite_5
+  - first:
+      213: -4437185544961636033
+    second: Shadow Lila Sprite_6
+  - first:
+      213: -2696589551575280235
+    second: Shadow Lila Sprite_7
+  - first:
+      213: 452445457396964092
+    second: Shadow Lila Sprite_8
+  - first:
+      213: 811373329159750055
+    second: Shadow Lila Sprite_9
+  - first:
+      213: -3271991409265505379
+    second: Shadow Lila Sprite_10
+  - first:
+      213: -836763856150276817
+    second: Shadow Lila Sprite_11
+  - first:
+      213: 2590976881158420770
+    second: Shadow Lila Sprite_12
+  - first:
+      213: 1194900661391976278
+    second: Shadow Lila Sprite_13
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1338
+        width: 411
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7292bc03f47e70d50800000000000000
+      internalID: 6703580897671325991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 1335
+        width: 402
+        height: 352
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa1eca52339f7270800000000000000
+      internalID: 8250474886847142650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1323
+        width: 436
+        height: 351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be2160fe76c67510800000000000000
+      internalID: 1546641770549423801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 1332
+        width: 377
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053524fba479e7900800000000000000
+      internalID: 684150540699063120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 855
+        width: 326
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7021dbb5f90774860800000000000000
+      internalID: 7514098333032190471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 865
+        width: 312
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f24f5efabc0cd50800000000000000
+      internalID: 6755623397393444657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 870
+        width: 292
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39401e8143fb62c0800000000000000
+      internalID: -4437185544961636033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 869
+        width: 277
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5955359071ac39ad0800000000000000
+      internalID: -2696589551575280235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 863
+        width: 290
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa92601fb8674600800000000000000
+      internalID: 452445457396964092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 855
+        width: 282
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a10bc87eb3924b00800000000000000
+      internalID: 811373329159750055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 434
+        width: 260
+        height: 403
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b8996262d8792d0800000000000000
+      internalID: -3271991409265505379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 437
+        width: 264
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25d649c4b73364f0800000000000000
+      internalID: -836763856150276817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 437
+        width: 261
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22972beeebff4f320800000000000000
+      internalID: 2590976881158420770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadow Lila Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 426
+        width: 262
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657e52812d3259010800000000000000
+      internalID: 1194900661391976278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
