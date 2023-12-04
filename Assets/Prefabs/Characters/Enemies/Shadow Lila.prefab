@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5691648836795109014}
   - component: {fileID: 5691648836795108969}
   m_Layer: 0
-  m_Name: Abyss
+  m_Name: Shadow Lila
   m_TagString: Abyss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

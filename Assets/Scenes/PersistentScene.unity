@@ -123,50 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &144453183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 144453184}
-  - component: {fileID: 144453185}
-  m_Layer: 0
-  m_Name: CameraFollowObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &144453184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144453183}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 401837742}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144453185
+--- !u!114 &15972806 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4484405042223870463, guid: 89c20dbeaaf62954ca9b8ada4382ea2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1567408057}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144453183}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c39a33ab93393534f802194556b38f22, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a13bfee1600a3741b5d2bed3498cb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1567408058}
 --- !u!1 &306408500
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +323,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 401837742}
-  - component: {fileID: 401837743}
   m_Layer: 0
   m_Name: ==Camera==
   m_TagString: Untagged
@@ -376,27 +343,9 @@ Transform:
   m_Children:
   - {fileID: 306408503}
   - {fileID: 6195958844615648863}
-  - {fileID: 144453184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &401837743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401837741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8f84c214ddff4418df0505ac041338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  virtualCameras:
-  - {fileID: 6195958844615648864}
-  fallPanAmount: 0.25
-  fallYPanTime: 0.35
-  fallSpeedYDampingThreshhold: -15
 --- !u!1 &1182607275
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,23 +548,83 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 15972806}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: bf76faa4-977f-4572-a457-dd9d4ccc37f7
     m_ActionName: Gameplay/Movement[/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 15972806}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 85af16ee-0f46-4ae7-b02b-ace6a7cabc6f
     m_ActionName: Gameplay/Jump[/Keyboard/c,/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 15972806}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c1dd787c-1dd5-4391-9d40-b385e62dfd81
     m_ActionName: Gameplay/Dash[/Keyboard/x,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 15972806}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2c2c6541-56ae-46cc-ac16-2269fe6b154d
     m_ActionName: Gameplay/Interact[/Keyboard/z,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 377c4361-41f5-48fe-b6ae-e555461b15ae
     m_ActionName: Gameplay/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
   - m_PersistentCalls:
@@ -659,7 +668,19 @@ MonoBehaviour:
     m_ActionId: 55ba8c0d-bda1-47d7-9154-3c32794a7852
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 15972806}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 28754e62-8de1-44a3-a069-3af1bb810d53
     m_ActionName: Gameplay/Attack[/DualShock4GamepadHID/buttonWest,/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
@@ -854,10 +875,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1403744192}
     m_Modifications:
-    - target: {fileID: 259228831, guid: 89c20dbeaaf62954ca9b8ada4382ea2a, type: 3}
-      propertyPath: cameraObject
-      value: 
-      objectReference: {fileID: 144453183}
     - target: {fileID: 1417043620663729885, guid: 89c20dbeaaf62954ca9b8ada4382ea2a,
         type: 3}
       propertyPath: m_RootOrder
@@ -918,11 +935,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lila
       objectReference: {fileID: 0}
-    - target: {fileID: 4090547698741929686, guid: 89c20dbeaaf62954ca9b8ada4382ea2a,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: e3dc52a898374844c8464e53b6eb28d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c20dbeaaf62954ca9b8ada4382ea2a, type: 3}
 --- !u!4 &1567408058 stripped
@@ -1536,7 +1548,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6195958844615648865}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
   m_Name: 
@@ -1580,7 +1592,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 144453184}
+  m_Follow: {fileID: 1567408058}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 10

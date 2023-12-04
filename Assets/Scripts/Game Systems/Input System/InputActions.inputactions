@@ -108,7 +108,7 @@
                 {
                     "name": "",
                     "id": "1cb0f807-8ffb-4479-937d-928e51528dce",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -119,7 +119,7 @@
                 {
                     "name": "",
                     "id": "e7476079-44fc-4e04-ad9f-ebce13260b83",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
