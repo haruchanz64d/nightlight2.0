@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6639212999007137434}
   - component: {fileID: 6639212999266482075}
   - component: {fileID: 6639212999266482074}
+  - component: {fileID: 8614262541430572399}
   m_Layer: 0
   m_Name: Scuttle
   m_TagString: Scuttle
@@ -154,3 +155,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.2, y: 2.04}
   m_EdgeRadius: 0
+--- !u!114 &8614262541430572399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639212999007137433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb8efb08da03e94dbf7e7afb3556a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

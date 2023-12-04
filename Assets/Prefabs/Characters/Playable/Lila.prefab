@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1417043620663729895}
   - component: {fileID: 5643038471586368430}
   - component: {fileID: 4090547698741929686}
-  - component: {fileID: 4484405042223870463}
+  - component: {fileID: 8379898177159399511}
   m_Layer: 0
   m_Name: Lila
   m_TagString: Player
@@ -263,7 +263,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &4484405042223870463
+--- !u!114 &8379898177159399511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,3 +275,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a13bfee1600a3741b5d2bed3498cb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 7.5
+  isFacingRight: 1
+  jumpForce: 12
+  jumpTime: 0.35
+  maxFallSpeed: 12
+  extraHeight: 0.25
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  dashSpeed: 20
+  dashDuration: 0.25
+  dashCooldown: 0.5

@@ -15,6 +15,12 @@ public class Player : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] private float extraHeight = 0.25f;
     [SerializeField] private LayerMask layerMask;
+    [Header("Dashing")]
+    [SerializeField] private float dashSpeed = 20f;
+    [SerializeField] private float dashDuration = 0.25f;
+    [SerializeField] private float dashCooldown = 0.5f;
+    private float dashTimer = 0f;
+    private bool isDashing = false;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -33,6 +39,8 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
+        Dash();
+        //Attack();
     }
 
     private void FixedUpdate()
@@ -49,6 +57,7 @@ public class Player : MonoBehaviour
         if (moveInput > 0 || moveInput < 0) { animator.SetBool("isRunning", true); TurnCheck(); }
         else animator.SetBool("isRunning", false);
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
+        TurnCheck();
     }
 
     private void Jump()
@@ -81,6 +90,29 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+
+    private void Dash()
+    {
+        if (UserInput.instance.inputActions.Gameplay.Dash.WasPressedThisFrame() && !isDashing && dashTimer <= 0f)
+        {
+            isDashing = true;
+            dashTimer = dashDuration;
+        }
+
+        if (isDashing)
+        {
+            rb.AddForce(transform.right * dashSpeed, ForceMode2D.Impulse);
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f) isDashing = false;
+        }
+
+        if (!isDashing)
+        {
+            dashTimer += Time.deltaTime;
+            if (dashTimer >= dashCooldown) dashTimer = dashCooldown;
+        }
+        animator.SetBool("isDashing", isDashing);
     }
     #endregion
 
@@ -120,5 +152,17 @@ public class Player : MonoBehaviour
             isFacingRight = !isFacingRight;
         }
     }
+    #endregion
+
+    #region Combat
+    // Unused
+    /*private void Attack()
+    {
+        if (UserInput.instance.inputActions.Gameplay.Attack.triggered)
+        {
+            Debug.Log($"Attacking...");
+            animator.SetBool("isAttacking", true);
+        }
+    }*/
     #endregion
 }
