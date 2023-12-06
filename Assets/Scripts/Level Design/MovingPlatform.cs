@@ -6,79 +6,38 @@ namespace LunarflyArts
 {
     public class MovingPlatform : MonoBehaviour
     {
-        Rigidbody2D rb;
-        [SerializeField] private float speed = 1f;
-        #region Vertical Platform
-        [SerializeField] private float minHeight = -5f;
-        [SerializeField] private float maxHeight = 5f;
-        [SerializeField] private float currentHeight = 0f;
-        #endregion
+        [SerializeField] private GameObject[] waypoints;
+        private int currentWaypointIndex = 0;
+        [SerializeField] private float platformSpeed = 2.5f;
 
-        #region Horizontal Platform
-        [SerializeField] private float minDistance = -5f;
-        [SerializeField] private float maxDistance = 5f;
-        private float currentDistance = 0f;
-        #endregion
-        public bool VerticalPlatform;
-        public bool HorizontalPlatform;
-
-
-        private void Awake()
+        private void Update()
         {
-            rb = GetComponent<Rigidbody2D>();
-        }
-
-        private void FixedUpdate()
-        {
-            if (VerticalPlatform) HandleVerticalPlatform();
-            if (HorizontalPlatform) HandleHorizontalPlatform();
-        }
-
-        private void HandleVerticalPlatform()
-        {
-            rb.MovePosition(transform.position + new Vector3(0f, speed * Time.deltaTime));
-
-            if (currentHeight <= minHeight)
+            if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < 0.1f)
             {
-                speed = -speed;
-                currentHeight = minHeight;
-            }
-            else if (currentHeight >= maxHeight)
-            {
-                speed = -speed;
-                currentHeight = maxHeight;
+                currentWaypointIndex++;
+                if (currentWaypointIndex >= waypoints.Length)
+                {
+                    currentWaypointIndex = 0;
+                }
             }
 
-            currentHeight += speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, platformSpeed * Time.deltaTime);
         }
 
-        private void HandleHorizontalPlatform()
-        {
-            rb.MovePosition(transform.position + new Vector3(speed * Time.deltaTime, 0f));
-
-            if (currentDistance <= minDistance)
-            {
-                speed = -speed;
-                currentDistance = minDistance;
-            }
-            else if (currentDistance >= maxDistance)
-            {
-                speed = -speed;
-                currentDistance = maxDistance;
-            }
-
-            currentDistance += speed * Time.deltaTime;
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
-                collision.transform.SetParent(transform);
+            {
+                collision.gameObject.transform.SetParent(transform);
+            }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            collision.transform.SetParent(null);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.transform.SetParent(null);
+            }
         }
     }
 }
