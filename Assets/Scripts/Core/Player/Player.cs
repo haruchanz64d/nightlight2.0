@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        //if (isDashing) return;
         movement = Input.GetAxisRaw("Horizontal");
         if (IsGrounded())
         {

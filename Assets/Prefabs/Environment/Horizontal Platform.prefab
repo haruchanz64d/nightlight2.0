@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5544035807194326879}
   - component: {fileID: 8559630696717597741}
   - component: {fileID: 4658537341764584339}
+  - component: {fileID: 5448039487646256475}
   m_Layer: 6
   m_Name: Horizontal Platform
   m_TagString: Untagged
@@ -153,3 +154,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &5448039487646256475
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108498369945535908}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.6}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.62, y: 1.24}
+    newSize: {x: 3.62, y: 1.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.62, y: 0.14053833}
+  m_EdgeRadius: 0
