@@ -33,11 +33,6 @@ public class Player : MonoBehaviour
         FlipAndAnimate();
     }
 
-    private void FixedUpdate()
-    {
-       
-    }
-
     private void FlipAndAnimate()
     {
         if (isFacingRight && movement < 0f || !isFacingRight && movement > 0f)
