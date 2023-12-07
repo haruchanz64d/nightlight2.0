@@ -50,7 +50,7 @@ MonoBehaviour:
       achievementTitle: Flawless Victory
       achievementDescription: Defeat Magus without getting hit by his attacks.
       isHidden: 1
-    - achievementID: HERO'S_TRIUMPH
+    - achievementID: HEROS_TRIUMPH
       achievementTitle: Hero's Triumph
       achievementDescription: Defeat Magus and restore the balance of light once and for all.
       isHidden: 0

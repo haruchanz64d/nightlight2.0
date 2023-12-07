@@ -8,31 +8,31 @@ public class PlayerAchievementTracker : MonoBehaviour
     private PlayerGameplayTracker playerGameplayTracker;
 
     #region PlayerPrefs Keys
-    private string adventurerKey = "AdventurerAchievement";
-    private string ascensionKey = "AscensionAchievement";
-    private string awakeningKey = "AwakeningAchievement";
-    private string confrontationKey = "ConfrontationAchievement";
-    private string enemyEradicatorKey = "EnemyEradicatorAchievement";
-    private string entrapmentKey = "EntrapmentAchievement";
-    private string equilibriumKey = "EquilibriumAchievement";
-    private string firstStrikeKey = "FirstStrikeAchievement";
-    private string flawlessVictoryKey = "FlawlessVictoryAchievement";
-    private string heroTriumphKey = "HeroTriumphAchievement";
-    private string jumpMasterKey = "JumpMasterAchievement";
-    private string lightOrbCollectorKey = "LightOrbCollectorAchievement";
-    private string nemesisVanquishedKey = "NemesisVanquishedAchievement";
-    private string pacifistKey = "PacifistAchievement";
-    private string pacifistRouteKey = "PacifistRouteAchievement";
-    private string peakClimberKey = "PeakClimberAchievement";
-    private string puzzleMasterKey = "PuzzleMasterAchievement";
-    private string revelationKey = "RevelationAchievement";
-    private string seekerOfLightKey = "SeekerOfLightAchievement";
-    private string speedrunnerKey = "SpeedrunnerAchievement";
-    private string storyConquerorKey = "StoryConquerorAchievement";
-    private string trappedNoviceKey = "TrappedNoviceAchievement";
-    private string ultimateChallengeKey = "UltimateChallengeAchievement";
-    private string ultimateMasterKey = "UltimateMasterAchievement";
-    private string unyieldingKey = "UnyieldingAchievement";
+    private string adventurerKey = "ADVENTURER";
+    private string ascensionKey = "ASCENSION";
+    private string awakeningKey = "AWAKENING";
+    private string confrontationKey = "CONFRONTATION";
+    private string enemyEradicatorKey = "ENEMY_ERADICATOR";
+    private string entrapmentKey = "ENTRAPMENT";
+    private string equilibriumKey = "EQUILIBRIUM";
+    private string firstStrikeKey = "FIRST_STRIKE";
+    private string flawlessVictoryKey = "FLAWLESS_VICTORY";
+    private string heroTriumphKey = "HEROS_TRIUMPH";
+    private string jumpMasterKey = "JUMP_MASTER";
+    private string lightOrbCollectorKey = "LIGHT_ORB_COLLECTOR";
+    private string nemesisVanquishedKey = "NEMESIS_VANQUISHED";
+    private string pacifistKey = "PACIFIST";
+    private string pacifistRouteKey = "PACIFIST_ROUTE";
+    private string peakClimberKey = "PEAK_CLIMBER";
+    private string puzzleMasterKey = "PUZZLE_MASTER";
+    private string revelationKey = "REVELATION";
+    private string seekerOfLightKey = "SEEKER_OF_LIGHT";
+    private string speedrunnerKey = "SPEEDRUNNER";
+    private string storyConquerorKey = "STORY_CONQUEROR";
+    private string trappedNoviceKey = "TRAPPED_NOVICE";
+    private string ultimateChallengeKey = "ULTIMATE_CHALLENGE";
+    private string ultimateMasterKey = "ULTIMATE_MASTER";
+    private string unyieldingKey = "UNYIELDING";
     #endregion
 
     private void Awake()
