@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerAchievementTracker : MonoBehaviour
@@ -114,7 +112,7 @@ public class PlayerAchievementTracker : MonoBehaviour
 
     private void ShowEnemyEradicatorAchievement()
     {
-        if (playerGameplayTracker.GetEnemyKillCount >= 300 && !PlayerPrefs.HasKey(enemyEradicatorKey))
+        if (playerGameplayTracker.GetEnemyKillCount >= 30 && !PlayerPrefs.HasKey(enemyEradicatorKey))
         {
             achievementManager.ShowNotification(Achievements.ENEMY_ERADICATOR);
             PlayerPrefs.SetInt(enemyEradicatorKey, 1);

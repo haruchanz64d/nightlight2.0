@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class AchievementItemController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image lockedAchievement;
+    [SerializeField] private Image unlockedAchievement;
+    [SerializeField] private TextMeshProUGUI achievementTitle;
+    [SerializeField] private TextMeshProUGUI achievementDescription;
+    public Achievement achievements;
 
-    // Update is called once per frame
-    void Update()
+    private void OnValidate()
     {
-        
+        RefreshView();
+    }
+    public void RefreshView()
+    {
+        achievementTitle.SetText(achievements.achievementTitle);
+        achievementDescription.SetText(achievements.achievementDescription);
+        unlockedAchievement.enabled = false;
+        lockedAchievement.enabled = true;
+
+        if (achievements.isHidden)
+        {
+            achievementTitle.SetText("");
+            achievementDescription.SetText("There's something more to this than meets the eye...");
+            unlockedAchievement.enabled = false;
+            lockedAchievement.enabled = true;
+        }
     }
 }

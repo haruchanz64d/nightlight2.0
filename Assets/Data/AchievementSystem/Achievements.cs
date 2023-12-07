@@ -1,4 +1,5 @@
-public enum Achievements {
+public enum Achievements 
+{
 ADVENTURER,
 ASCENSION,
 AWAKENING,
