@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f295a9a398337a40a0bdc2532c99ca4, type: 3}
+  m_Name: New Achievement Database
+  m_EditorClassIdentifier: 
+  achievements:
+    array:
+    - achievementID: ADVENTURER
+      achievementTitle: Adventurer
+      achievementDescription: Complete the game.
+      isHidden: 0
+    - achievementID: ASCENSION
+      achievementTitle: Ascension
+      achievementDescription: Complete Chapter 4.
+      isHidden: 0
+    - achievementID: AWAKENING
+      achievementTitle: Awakening
+      achievementDescription: Complete Prologue.
+      isHidden: 0
+    - achievementID: CONFRONTATION
+      achievementTitle: Confrontation
+      achievementDescription: Complete Chapter 5.
+      isHidden: 0
+    - achievementID: ENEMY_ERADICATOR
+      achievementTitle: Enemy Eradicator
+      achievementDescription: Defeat 30 common enemies throughout the game. (Excluding Elite and Final Boss)
+      isHidden: 0
+    - achievementID: ENTRAPMENT
+      achievementTitle: Entrapment
+      achievementDescription: Complete Chapter 2.
+      isHidden: 0
+    - achievementID: EQUILIBRIUM
+      achievementTitle: Equilibrium
+      achievementDescription: Complete Epilogue.
+      isHidden: 0
+    - achievementID: FIRST_STRIKE
+      achievementTitle: First Strike
+      achievementDescription: Defeat your common first enemy.
+      isHidden: 0
+    - achievementID: FLAWLESS_VICTORY
+      achievementTitle: Flawless Victory
+      achievementDescription: Defeat Magus without getting hit by his attacks.
+      isHidden: 1
+    - achievementID: HERO'S_TRIUMPH
+      achievementTitle: Hero's Triumph
+      achievementDescription: Defeat Magus and restore the balance of light once and for all.
+      isHidden: 0
+    - achievementID: JUMP_MASTER
+      achievementTitle: Jump Master
+      achievementDescription: Execute 300 consecutive jumps.
+      isHidden: 1
+    - achievementID: LIGHT_ORB_COLLECTOR
+      achievementTitle: Light Orb Collector
+      achievementDescription: Collect 100% of all light orbs (including hidden ones).
+      isHidden: 0
+    - achievementID: NEMESIS_VANQUISHED
+      achievementTitle: Nemesis Vanquished
+      achievementDescription: Defeat your silhouette that haunts you throughout Chapter 3.
+      isHidden: 1
+    - achievementID: PACIFIST
+      achievementTitle: Pacifist
+      achievementDescription: Finish a single chapter without defeating a single enemy.
+      isHidden: 1
+    - achievementID: PACIFIST_ROUTE
+      achievementTitle: Pacifist Route
+      achievementDescription: Complete any chapter without defeating any enemies.
+      isHidden: 1
+    - achievementID: PEAK_CLIMBER
+      achievementTitle: Peak Climber
+      achievementDescription: Reach the highest point of Lumina Spire in Chapter 5.
+      isHidden: 0
+    - achievementID: PUZZLE_MASTER
+      achievementTitle: Puzzle Master
+      achievementDescription: Successfully solve all environmental puzzles in all chapters.
+      isHidden: 1
+    - achievementID: REVELATION
+      achievementTitle: Revelation
+      achievementDescription: Complete Chapter 3.
+      isHidden: 0
+    - achievementID: SEEKER_OF_LIGHT
+      achievementTitle: Seeker of Light
+      achievementDescription: Spot and collect your first hidden light orb in any chapter.
+      isHidden: 1
+    - achievementID: SPEEDRUNNER
+      achievementTitle: Speedrunner
+      achievementDescription: Complete the game without collecting any light orbs. (Including hidden ones)
+      isHidden: 1
+    - achievementID: STORY_CONQUEROR
+      achievementTitle: Story Conqueror
+      achievementDescription: Complete all Chapters of the game.
+      isHidden: 0
+    - achievementID: TRAPPED_NOVICE
+      achievementTitle: Trapped Novice
+      achievementDescription: Die from the trap for the first time.
+      isHidden: 1
+    - achievementID: ULTIMATE_CHALLENGE
+      achievementTitle: Ultimate Challenge
+      achievementDescription: Complete the game on 100% progress without a single death count.
+      isHidden: 1
+    - achievementID: ULTIMATE_MASTER
+      achievementTitle: Ultimate Master
+      achievementDescription: Obtain all achievements in the game. (Including hidden ones)
+      isHidden: 1
+    - achievementID: UNYIELDING
+      achievementTitle: Unyielding
+      achievementDescription: Complete Chapter 1.
+      isHidden: 0

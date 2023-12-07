@@ -4,8 +4,8 @@ using UnityEngine;
 public class AchievementNotificationController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI achievementTitleLabel;
-    private Animator animator;
-    private AudioSource achievementAudio;
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource achievementAudio;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -14,7 +14,7 @@ public class AchievementNotificationController : MonoBehaviour
     public void ShowNotification(Achievement achievement)
     {
         achievementTitleLabel.SetText(achievement.achievementTitle);
-        animator.SetTrigger("Appear");
+        animator.SetTrigger("isAchievementObtained");
         achievementAudio.Play();
     }
 }

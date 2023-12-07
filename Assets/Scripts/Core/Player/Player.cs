@@ -10,6 +10,19 @@ public class Player : MonoBehaviour
     private float movement;
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float movementSpeed = 7.5f;
+
+    private int jumpCount = 0;
+    public int GetJumpCount
+    {
+        get
+        {
+            return jumpCount;
+        }
+        set
+        {
+            jumpCount = value;
+        }
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -24,10 +37,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpCount++;
         }
         if (Input.GetKeyUp(KeyCode.C))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            jumpCount++;
         }
 
         FlipAndAnimate();
