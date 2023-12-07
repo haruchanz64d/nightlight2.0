@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6639212999266482075}
   - component: {fileID: 6639212999266482074}
   - component: {fileID: 8614262541430572399}
+  - component: {fileID: 8493119136916660795}
   m_Layer: 0
   m_Name: Scuttle
   m_TagString: Scuttle
@@ -173,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2437427}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.2, y: 2.04}
+  m_Size: {x: 4.2, y: 1.5525146}
   m_EdgeRadius: 0
 --- !u!114 &8614262541430572399
 MonoBehaviour:
@@ -199,4 +200,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1005184096131948828}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!61 &8493119136916660795
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639212999007137433}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.7948129}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.2, y: 2.04}
+    newSize: {x: 4.2, y: 2.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.2, y: 0.45037413}
+  m_EdgeRadius: 0

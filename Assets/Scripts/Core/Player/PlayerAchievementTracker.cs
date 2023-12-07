@@ -166,7 +166,7 @@ public class PlayerAchievementTracker : MonoBehaviour
 
     private void ShowJumpMasterAchievement()
     {
-        if (player.GetJumpCount >= 10 && !PlayerPrefs.HasKey(jumpMasterKey))
+        if (player.GetJumpCount >= 300 && !PlayerPrefs.HasKey(jumpMasterKey))
         {
             achievementManager.ShowNotification(Achievements.JUMP_MASTER);
             PlayerPrefs.SetInt(jumpMasterKey, 1);

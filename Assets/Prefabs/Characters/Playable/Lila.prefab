@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3295665769454679908}
   - component: {fileID: 267609491}
   - component: {fileID: 8351380627240582042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lila
   m_TagString: Player
   m_Icon: {fileID: 0}

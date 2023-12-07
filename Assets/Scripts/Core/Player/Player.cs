@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    private bool isDead;
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
+        }
+        set
+        {
+            isDead = value;
+        }
+    }
+
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D box;
+    private PlayerGameplayTracker playerGameplay;
     [SerializeField] private LayerMask layer;
     [SerializeField] private bool isFacingRight = true;
     private float movement;
@@ -28,9 +43,16 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        playerGameplay = GetComponent<PlayerGameplayTracker>();
     }
     private void Update()
     {
+        if (isDead)
+        {
+            DestroyAndRespawn();
+            return;
+        }
+
         movement = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
 
@@ -64,5 +86,16 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 0.1f, layer);
+    }
+
+    public void DestroyAndRespawn()
+    {
+        rb.bodyType = RigidbodyType2D.Static;
+        animator.SetTrigger("isDead");
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

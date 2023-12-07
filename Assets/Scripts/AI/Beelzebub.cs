@@ -1,86 +1,59 @@
 using UnityEngine;
 using System.Collections;
+
 public class Beelzebub : MonoBehaviour
 {
-    private GameObject player;
-    [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float detectionDelay = 0.5f;
-    [SerializeField] private float chargeSpeed = 3.5f;
+    [SerializeField] private float lineOfSight = 5.0f;
+    [SerializeField] private float movementSpeed = 10.0f;
+    [SerializeField] private float destroyAfterDelay = 0.5f;
+    private Transform player;
     private Animator animator;
-    private bool isPlayerDetected;
-    private float detectionTimer;
-    private float movementTimer;
-    private bool isMovingRight;
 
     private void Start()
     {
-        isPlayerDetected = false;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        movementTimer = Time.time;
-        isMovingRight = true;
     }
 
     private void Update()
     {
-        if (isPlayerDetected)
+        if (player == null)
+            return;
+        float distanceToPlayer = Vector2.Distance(player.position, transform.position);
+        if (distanceToPlayer < lineOfSight)
         {
-            detectionTimer += Time.deltaTime;
-            if (detectionTimer >= detectionDelay)
-            {
-                Vector3 direction = player.transform.position - transform.position;
-                transform.Translate(direction * chargeSpeed * Time.deltaTime);
-
-                animator.SetBool("isCharging", true);
-            }
+            animator.Play("Attack");
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+        }
+        else if (distanceToPlayer > lineOfSight)
+        {
+            animator.Play("Patrol");
+        }
+        Flip();
+    }
+    private void Flip()
+    {
+        if (transform.position.x > player.transform.position.x)
+        {
+            transform.rotation = Quaternion.Euler(0, 180f, 0f);
         }
         else
         {
-            if (Time.time - movementTimer >= 5.0f)
-            {
-                isMovingRight = !isMovingRight;
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                movementTimer = Time.time;
-            }
-
-            transform.Translate(isMovingRight ? Vector2.right : Vector2.left * movementSpeed * Time.deltaTime); // Move based on direction
-            animator.SetBool("isCharging", false);
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            isPlayerDetected = true;
-            detectionTimer = 0f;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerDetected = false;
-            detectionTimer = 0f;
-            animator.SetBool("isCharging", false);
-            animator.SetBool("isIdle", true);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetBool("isExplodeUponImpact", true);
-
-            StartCoroutine(DestroyAfterDelay(1.5f));
+            animator.Play("Death");
+            collision.gameObject.GetComponent<Player>().IsDead = true;
         }
     }
 
-   private IEnumerator DestroyAfterDelay(float delay)
+    public void DestroyEnemy()
     {
-        yield return new WaitForSeconds(delay);
         Destroy(gameObject);
     }
 }
