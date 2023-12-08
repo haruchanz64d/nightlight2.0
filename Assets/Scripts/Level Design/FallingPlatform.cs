@@ -4,7 +4,7 @@ namespace LunarflyArts
 {
     public class FallingPlatform : MonoBehaviour
     {
-        private float fallDelay = 1f;
+        private float fallDelay = 2.5f;
         private float destroyDelay = 0.5f;
 
         Rigidbody2D rb;
