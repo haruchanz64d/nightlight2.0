@@ -218,8 +218,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Achievement Title Goes Here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b138e451f4e0c49498b35640cf35b603, type: 2}
-  m_sharedMaterial: {fileID: 9194797560148616628, guid: b138e451f4e0c49498b35640cf35b603,
+  m_fontAsset: {fileID: 11400000, guid: 4fddc9db893338041893db7ec8732c42, type: 2}
+  m_sharedMaterial: {fileID: 6623050315660313991, guid: 4fddc9db893338041893db7ec8732c42,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -300,7 +300,6 @@ GameObject:
   - component: {fileID: 8746296439307718846}
   - component: {fileID: 4907699193701185256}
   - component: {fileID: 4618119284938475213}
-  - component: {fileID: 95749113075234839}
   m_Layer: 5
   m_Name: Achievement Container
   m_TagString: Untagged
@@ -401,8 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievementTitleLabel: {fileID: 8746296439293345827}
+  animator: {fileID: 0}
   achievementAudio: {fileID: 4618119284938475213}
-  hiddenAchievementAudioSource: {fileID: 95749113075234839}
 --- !u!82 &4618119284938475213
 AudioSource:
   m_ObjectHideFlags: 0
@@ -413,103 +412,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7565a9355e7158b40ba056f2bd2ad459, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &95749113075234839
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8746296439307718842}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e49724d3e62a2cb41960538ea7d1441f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b8f37c6a7c15644e91a85e003bba348, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -662,8 +565,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Achievement Obtained!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b138e451f4e0c49498b35640cf35b603, type: 2}
-  m_sharedMaterial: {fileID: 9194797560148616628, guid: b138e451f4e0c49498b35640cf35b603,
+  m_fontAsset: {fileID: 11400000, guid: 4fddc9db893338041893db7ec8732c42, type: 2}
+  m_sharedMaterial: {fileID: 6623050315660313991, guid: 4fddc9db893338041893db7ec8732c42,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -12,10 +12,9 @@ public class Magus : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [Header("HP Drain")]
-    private float hpDrainDMG = 10f;
-    private float hpDrainTickInterval = 1.0f;
+    private float hpDrainDMG = 1.5f;
+    private float hpDrainTickInterval = 2.0f;
     private float hpDrainTimer = 0f;
-    private bool isDead = false;
 
     private void Start()
     {

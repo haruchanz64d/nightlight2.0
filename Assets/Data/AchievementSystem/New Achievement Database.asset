@@ -69,11 +69,10 @@ MonoBehaviour:
       achievementTitle: Light Orb Collector
       achievementDescription: Collect 100% of all light orbs (including hidden ones).
       isHidden: 0
-    - achievementID: NEMESIS_VANQUISHED
-      achievementTitle: Nemesis Vanquished
-      achievementDescription: Defeat your silhouette that haunts you throughout Chapter
-        3.
-      isHidden: 1
+    - achievementID: NO_RUSH
+      achievementTitle: No Rush
+      achievementDescription: Have a playtime of 1 minute.
+      isHidden: 0
     - achievementID: PACIFIST
       achievementTitle: Pacifist
       achievementDescription: Finish a single chapter without defeating a single

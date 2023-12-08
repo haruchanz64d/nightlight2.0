@@ -16,14 +16,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowMenu()
     {
-        mainMenuCanvas.enabled = true;
         achievementCanvas.enabled = false;
+        mainMenuCanvas.enabled = true;
     }
 
     public void ShowAchievement()
     {
-        mainMenuCanvas.enabled = false;
         achievementCanvas.enabled = true;
+        mainMenuCanvas.enabled = false;
     }
 
     public void QuitGame()

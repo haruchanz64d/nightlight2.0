@@ -18,10 +18,10 @@ public class Player : MonoBehaviour
     private string equilibriumKey = "EQUILIBRIUM";
     private string firstStrikeKey = "FIRST_STRIKE";
     private string flawlessVictoryKey = "FLAWLESS_VICTORY";
-    private string heroTriumphKey = "HEROS_TRIUMPH";
+    private string herosTriumphKey = "HEROS_TRIUMPH";
     private string jumpMasterKey = "JUMP_MASTER";
     private string lightOrbCollectorKey = "LIGHT_ORB_COLLECTOR";
-    private string nemesisVanquishedKey = "NEMESIS_VANQUISHED";
+    private string noRushKey = "NO_RUSH";
     private string pacifistKey = "PACIFIST";
     private string pacifistRouteKey = "PACIFIST_ROUTE";
     private string peakClimberKey = "PEAK_CLIMBER";
@@ -43,6 +43,9 @@ public class Player : MonoBehaviour
     private bool isShadowLilaDefeated;
     private int lightOrbCounter = 0;
     private int hiddenLightOrbCounter = 0;
+    private float idleMaxTimer = 60f;
+    private float lastInputTime;
+    private float currentIdleTimer;
     #endregion
 
     #region Unity Components
@@ -182,11 +185,16 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        lastInputTime = Time.time;
+        currentIdleTimer = 0.0f;
     }
     private void Update()
     {
+        if (gameManager.IsGamePaused == true) return;
         HandleInput();
         FlipAndAnimate();
+
+        currentIdleTimer = Time.time - lastInputTime;
     }
 
     private void LateUpdate()
@@ -210,6 +218,11 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             jumpCount++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameManager.OnPause();
         }
     }
     #endregion
@@ -236,12 +249,14 @@ public class Player : MonoBehaviour
         {
             GetLightOrbCounter += 1;
             lightOrbCount.SetText(GetLightOrbCounter.ToString());
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Hidden Light Orb"))
         {
             GetHiddenLightOrbCounter += 1;
             lightOrbCount.SetText(GetHiddenLightOrbCounter.ToString());
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Spike"))
@@ -288,10 +303,10 @@ public class Player : MonoBehaviour
         ShowEquilibriumAchievement();
         ShowFirstStrikeAchievement();
         ShowFlawlessVictoryAchievement();
-        ShowHeroTriumphAchievement();
+        ShowHeroTriumphedAchievement();
         ShowJumpMasterAchievement();
         ShowLightOrbCollectorAchievement();
-        ShowNemesisVanquishedAchievement();
+        ShowNoRushAchievement();
         ShowPacifistAchievement();
         ShowPacifistRouteAchievement();
         ShowPeakClimberAchievement();
@@ -398,12 +413,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ShowHeroTriumphAchievement()
+    private void ShowHeroTriumphedAchievement()
     {
-        if (IsMagusDefeated == true && !PlayerPrefs.HasKey(heroTriumphKey))
+        if (IsMagusDefeated == true && !PlayerPrefs.HasKey(herosTriumphKey))
         {
             achievementManager.ShowNotification(Achievements.HEROS_TRIUMPH);
-            PlayerPrefs.SetInt(heroTriumphKey, 1);
+            PlayerPrefs.SetInt(herosTriumphKey, 1);
         }
     }
 
@@ -424,13 +439,12 @@ public class Player : MonoBehaviour
             PlayerPrefs.SetInt(lightOrbCollectorKey, 1);
         }
     }
-
-    private void ShowNemesisVanquishedAchievement()
+    private void ShowNoRushAchievement()
     {
-        if (IsShadowLilaDefeated == true && !PlayerPrefs.HasKey(nemesisVanquishedKey))
+        if (currentIdleTimer >= idleMaxTimer && !PlayerPrefs.HasKey(noRushKey))
         {
-            achievementManager.ShowNotification(Achievements.NEMESIS_VANQUISHED);
-            PlayerPrefs.SetInt(nemesisVanquishedKey, 1);
+            achievementManager.ShowNotification(Achievements.HEROS_TRIUMPH);
+            PlayerPrefs.SetInt(noRushKey, 1);
         }
     }
 
@@ -554,10 +568,10 @@ public class Player : MonoBehaviour
                PlayerPrefs.HasKey(equilibriumKey) &&
                PlayerPrefs.HasKey(firstStrikeKey) &&
                PlayerPrefs.HasKey(flawlessVictoryKey) &&
-               PlayerPrefs.HasKey(heroTriumphKey) &&
+               PlayerPrefs.HasKey(herosTriumphKey) &&
                PlayerPrefs.HasKey(jumpMasterKey) &&
                PlayerPrefs.HasKey(lightOrbCollectorKey) &&
-               PlayerPrefs.HasKey(nemesisVanquishedKey) &&
+               PlayerPrefs.HasKey(noRushKey) &&
                PlayerPrefs.HasKey(pacifistKey) &&
                PlayerPrefs.HasKey(pacifistRouteKey) &&
                PlayerPrefs.HasKey(peakClimberKey) &&
