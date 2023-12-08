@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    #region Singleton
     private Player instance;
+    #endregion
 
     #region PlayerPrefs Keys
     private string adventurerKey = "ADVENTURER";
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     private string unyieldingKey = "UNYIELDING";
     #endregion
 
+    #region Player Stats
     private int enemyKillCount = 0;
     private int deathCount = 0;
     private int deathCountFromTraps = 0;
@@ -40,19 +43,29 @@ public class Player : MonoBehaviour
     private bool isShadowLilaDefeated;
     private int lightOrbCounter = 0;
     private int hiddenLightOrbCounter = 0;
+    #endregion
 
+    #region Unity Components
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D box;
+    #endregion
+
+    #region Managers
     private GameManager gameManager;
     private AchievementManager achievementManager;
+    #endregion
+
+    #region Movement Variables
     [SerializeField] private LayerMask layer;
     [SerializeField] private bool isFacingRight = true;
     private float movement;
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float movementSpeed = 7.5f;
-
     private int jumpCount = 0;
+    #endregion
+
+    #region Getters & Setters
     public int GetJumpCount
     {
         get
@@ -146,6 +159,9 @@ public class Player : MonoBehaviour
             deathCount = value;
         }
     }
+    #endregion
+
+    #region Unity MonoBehaviour functions
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -168,6 +184,19 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        HandleInput();
+        FlipAndAnimate();
+    }
+
+    private void LateUpdate()
+    {
+       AchivementCollection();
+    }
+    #endregion
+
+    #region Movement
+    private void HandleInput()
+    {
         movement = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
 
@@ -181,9 +210,63 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             jumpCount++;
         }
-
-        FlipAndAnimate();
     }
+    #endregion
+
+    #region Animation
+    private void FlipAndAnimate()
+    {
+        if (isFacingRight && movement < 0f || !isFacingRight && movement > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+
+        animator.SetBool("isRunning", movement != 0f);
+    }
+    #endregion
+
+    #region Triggers
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Light Orb"))
+        {
+            GetLightOrbCounter += 1;
+            DestroyAndRespawn();
+        }
+
+        if (collision.gameObject.CompareTag("Hidden Light Orb"))
+        {
+            GetHiddenLightOrbCounter += 1;
+            DestroyAndRespawn();
+        }
+
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            deathCountFromTraps += 1;
+            deathCount += 1;
+            DestroyAndRespawn();
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 0.1f, layer);
+    }
+
+    public void DestroyAndRespawn()
+    {
+        rb.bodyType = RigidbodyType2D.Static;
+        animator.SetTrigger("isDead");
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    #endregion
 
     #region Achievement Collection
     private void AchivementCollection()
@@ -489,55 +572,4 @@ public class Player : MonoBehaviour
     }
 
     #endregion
-
-    private void FlipAndAnimate()
-    {
-        if (isFacingRight && movement < 0f || !isFacingRight && movement > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
-
-        animator.SetBool("isRunning", movement != 0f);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Light Orb"))
-        {
-            GetLightOrbCounter += 1;
-            DestroyAndRespawn();
-        }
-
-        if (collision.gameObject.CompareTag("Hidden Light Orb"))
-        {
-            GetHiddenLightOrbCounter += 1;
-            DestroyAndRespawn();
-        }
-
-        if (collision.gameObject.CompareTag("Spike"))
-        {
-            deathCountFromTraps += 1;
-            deathCount += 1;
-            DestroyAndRespawn();
-        }
-    }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 0.1f, layer);
-    }
-
-    public void DestroyAndRespawn()
-    {
-        rb.bodyType = RigidbodyType2D.Static;
-        animator.SetTrigger("isDead");
-    }
-
-    public void ResetLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 }
