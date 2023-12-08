@@ -12,6 +12,7 @@ public class PlayerAchievementTracker : MonoBehaviour
     private string ascensionKey = "ASCENSION";
     private string awakeningKey = "AWAKENING";
     private string confrontationKey = "CONFRONTATION";
+    private string eagleEyeKey = "EAGLE_EYE";
     private string enemyEradicatorKey = "ENEMY_ERADICATOR";
     private string entrapmentKey = "ENTRAPMENT";
     private string equilibriumKey = "EQUILIBRIUM";
@@ -24,9 +25,8 @@ public class PlayerAchievementTracker : MonoBehaviour
     private string pacifistKey = "PACIFIST";
     private string pacifistRouteKey = "PACIFIST_ROUTE";
     private string peakClimberKey = "PEAK_CLIMBER";
-    private string puzzleMasterKey = "PUZZLE_MASTER";
     private string revelationKey = "REVELATION";
-    private string seekerOfLightKey = "SEEKER_OF_LIGHT";
+    private string seekerOfHiddenLightKey = "SEEKER_OF_HIDDEN_LIGHT";
     private string speedrunnerKey = "SPEEDRUNNER";
     private string storyConquerorKey = "STORY_CONQUEROR";
     private string trappedNoviceKey = "TRAPPED_NOVICE";
@@ -49,6 +49,7 @@ public class PlayerAchievementTracker : MonoBehaviour
         ShowAscensionAchievement();
         ShowAwakeningAchievement();
         ShowConfrontationAchievement();
+        ShowEagleEyeAchievement();
         ShowEnemyEradicatorAchievement();
         ShowEntrapmentAchievement();
         ShowEquilibriumAchievement();
@@ -61,9 +62,8 @@ public class PlayerAchievementTracker : MonoBehaviour
         ShowPacifistAchievement();
         ShowPacifistRouteAchievement();
         ShowPeakClimberAchievement();
-        ShowPuzzleMasterAchievement();
         ShowRevelationAchievement();
-        ShowSeekerOfLightAchievement();
+        ShowSeekerOfHiddenLightAchievement();
         ShowSpeedrunnerAchievement();
         ShowStoryConquerorAchievement();
         ShowTrappedNoviceAchievement();
@@ -107,6 +107,15 @@ public class PlayerAchievementTracker : MonoBehaviour
         {
             achievementManager.ShowNotification(Achievements.CONFRONTATION);
             PlayerPrefs.SetInt(confrontationKey, 1);
+        }
+    }
+
+    private void ShowEagleEyeAchievement()
+    {
+        if (playerGameplayTracker.GetPuzzleSolvedCounter >= 5 && !PlayerPrefs.HasKey(eagleEyeKey))
+        {
+            achievementManager.ShowNotification(Achievements.EAGLE_EYE);
+            PlayerPrefs.SetInt(eagleEyeKey, 1);
         }
     }
 
@@ -222,15 +231,6 @@ public class PlayerAchievementTracker : MonoBehaviour
         }
     }
 
-    private void ShowPuzzleMasterAchievement()
-    {
-        if (playerGameplayTracker.GetPuzzleSolvedCounter >= 5 && !PlayerPrefs.HasKey(puzzleMasterKey))
-        {
-            achievementManager.ShowNotification(Achievements.PUZZLE_MASTER);
-            PlayerPrefs.SetInt(puzzleMasterKey, 1);
-        }
-    }
-
     private void ShowRevelationAchievement()
     {
         if (gameManager.IsChapterThreeCompleted == true && !PlayerPrefs.HasKey(revelationKey))
@@ -240,18 +240,23 @@ public class PlayerAchievementTracker : MonoBehaviour
         }
     }
 
-    private void ShowSeekerOfLightAchievement()
+    private void ShowSeekerOfHiddenLightAchievement()
     {
-        if (playerGameplayTracker.GetHiddenLightOrbCounter >= 1 && !PlayerPrefs.HasKey(seekerOfLightKey))
+        if (playerGameplayTracker.GetHiddenLightOrbCounter >= 1 && !PlayerPrefs.HasKey(seekerOfHiddenLightKey))
         {
-            achievementManager.ShowNotification(Achievements.SEEKER_OF_LIGHT);
-            PlayerPrefs.SetInt(seekerOfLightKey, 1);
+            achievementManager.ShowNotification(Achievements.SEEKER_OF_HIDDEN__LIGHT);
+            PlayerPrefs.SetInt(seekerOfHiddenLightKey, 1);
         }
     }
 
     private void ShowSpeedrunnerAchievement()
     {
-        if (playerGameplayTracker.GetHiddenLightOrbCounter < 0 && playerGameplayTracker.GetLightOrbCounter < 0 && !PlayerPrefs.HasKey(speedrunnerKey))
+        if (playerGameplayTracker.GetHiddenLightOrbCounter < 0 && playerGameplayTracker.GetLightOrbCounter < 0 &&
+            gameManager.IsPrologueCompleted == true && gameManager.IsChapterOneCompleted == true
+            && gameManager.IsChapterTwoCompleted == true && gameManager.IsChapterThreeCompleted == true
+            && gameManager.IsChapterFourCompleted == true && gameManager.IsChapterFiveCompleted == true
+            && gameManager.IsEpilogueCompleted == true
+            && !PlayerPrefs.HasKey(speedrunnerKey))
         {
             achievementManager.ShowNotification(Achievements.SPEEDRUNNER);
             PlayerPrefs.SetInt(speedrunnerKey, 1);
@@ -310,6 +315,7 @@ public class PlayerAchievementTracker : MonoBehaviour
                PlayerPrefs.HasKey(ascensionKey) &&
                PlayerPrefs.HasKey(awakeningKey) &&
                PlayerPrefs.HasKey(confrontationKey) &&
+               PlayerPrefs.HasKey(eagleEyeKey) &&
                PlayerPrefs.HasKey(enemyEradicatorKey) &&
                PlayerPrefs.HasKey(entrapmentKey) &&
                PlayerPrefs.HasKey(equilibriumKey) &&
@@ -322,9 +328,8 @@ public class PlayerAchievementTracker : MonoBehaviour
                PlayerPrefs.HasKey(pacifistKey) &&
                PlayerPrefs.HasKey(pacifistRouteKey) &&
                PlayerPrefs.HasKey(peakClimberKey) &&
-               PlayerPrefs.HasKey(puzzleMasterKey) &&
                PlayerPrefs.HasKey(revelationKey) &&
-               PlayerPrefs.HasKey(seekerOfLightKey) &&
+               PlayerPrefs.HasKey(seekerOfHiddenLightKey) &&
                PlayerPrefs.HasKey(speedrunnerKey) &&
                PlayerPrefs.HasKey(storyConquerorKey) &&
                PlayerPrefs.HasKey(trappedNoviceKey) &&

@@ -5,13 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Kill Plane
-  - Dash Crystal
   - Scuttle
   - Stingbite
   - Beelzebub
   - Abyss
   - Magus
-  - Shockwave
+  - Light Orb
+  - Hidden Light Orb
+  - Spike
   layers:
   - Default
   - TransparentFX

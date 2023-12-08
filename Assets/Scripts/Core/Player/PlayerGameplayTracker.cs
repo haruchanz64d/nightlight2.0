@@ -106,8 +106,18 @@ public class PlayerGameplayTracker : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Light Orb"))
+        {
+            GetLightOrbCounter += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Hidden Light Orb"))
+        {
+            GetHiddenLightOrbCounter += 1;
+            Destroy(collision.gameObject);
+        }
     }
 }

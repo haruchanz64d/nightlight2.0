@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 6639212999007137433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1005184096131948828}
   m_Father: {fileID: 0}
@@ -203,7 +203,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1005184096131948828}
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!61 &8493119136916660795
 BoxCollider2D:
   m_ObjectHideFlags: 0
