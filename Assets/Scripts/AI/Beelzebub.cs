@@ -45,10 +45,10 @@ public class Beelzebub : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && collision.transform.position.y > transform.position.y + 0.5f)
+        if (collision.gameObject.CompareTag("Player"))
         {
             animator.Play("Death");
-            collision.gameObject.GetComponent<Player>().IsDead = true;
+            collision.gameObject.GetComponent<Player>().DestroyAndRespawn();
         }
     }
 

@@ -8,7 +8,7 @@ public class Magus : MonoBehaviour
     private float maxHealth = 100f;
     private float currentHealth;
     [SerializeField] private Image healthBar;
-    private PlayerGameplayTracker player;
+    private Player player;
     private Rigidbody2D rb;
     private Animator animator;
     [Header("HP Drain")]
@@ -22,7 +22,7 @@ public class Magus : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerGameplayTracker>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void FixedUpdate()

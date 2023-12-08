@@ -68,7 +68,7 @@ public class Stingbite : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             isDead = true;
 
-            collision.gameObject.GetComponent<PlayerGameplayTracker>().GetEnemyKillCount += 1;
+            collision.gameObject.GetComponent<Player>().GetEnemyKillCount += 1;
         }
     }
 
@@ -77,7 +77,7 @@ public class Stingbite : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             animator.Play("Death");
-            collision.gameObject.GetComponent<Player>().IsDead = true;
+            collision.gameObject.GetComponent<Player>().DestroyAndRespawn();
         }
     }
 }
