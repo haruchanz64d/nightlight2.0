@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ca59f31f8423f4fbc92b0351505d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 6727983740343108975}
+  - {fileID: 6727983739594100671}
   platformSpeed: 2.5
 --- !u!61 &5043106108009521893
 BoxCollider2D:
