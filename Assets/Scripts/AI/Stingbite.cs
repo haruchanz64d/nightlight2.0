@@ -6,8 +6,11 @@ public class Stingbite : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float destroyAfterDelay;
-    [SerializeField] private bool isMovingRight = false;
+    [SerializeField] private float moveInterval = 2.0f; // Time between movement changes
+    private bool facingRight = true;
+    private float nextMovementTime = 0.0f; // Time of next movement change
     private Transform player;
+    [SerializeField] private Transform rayOrigin;
     private Rigidbody2D rb;
     private Animator animator;
     private bool isDead = false;
@@ -19,42 +22,38 @@ public class Stingbite : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        rayDirection = isMovingRight ? Vector2.right : Vector2.left;
+        rayDirection = facingRight ? Vector2.right : Vector2.left;
     }
 
     private void Update()
     {
-        if (player == null)
+        if (Time.time >= nextMovementTime)
         {
-            return;
-        }
-
-        float distanceToPlayer = Vector2.Distance(player.position, transform.position);
-
-        // Raycast check
-        if (Physics2D.Raycast(transform.position, rayDirection, Mathf.Infinity, LayerMask.GetMask("Player")))
-        {
-            animator.Play("Attack");
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
-        }
-        else if (distanceToPlayer > 0f)
-        {
-            animator.Play("Patrol");
+            MoveRandomly();
+            nextMovementTime = Time.time + moveInterval;
         }
 
         Flip();
     }
 
+    private void MoveRandomly()
+    {
+        float direction = Random.Range(-1.0f, 1.0f);
+        rb.velocity = new Vector2(direction * movementSpeed, rb.velocity.y);
+    }
+
     private void Flip()
     {
-        if (transform.position.x > player.transform.position.x)
+        if (rb.velocity.x < 0 && facingRight)
         {
-            transform.rotation = Quaternion.Euler(0, 180f, 0f);
+            transform.rotation = Quaternion.Euler(0, 0f, 0f);
+            facingRight = false;
             rayDirection = Vector2.left;
         }
-        else
+        else if (rb.velocity.x > 0 && !facingRight)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0, 180f, 0f);
+            facingRight = true;
             rayDirection = Vector2.right;
         }
     }

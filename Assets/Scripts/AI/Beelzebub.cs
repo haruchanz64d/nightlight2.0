@@ -3,43 +3,47 @@ using System.Collections;
 
 public class Beelzebub : MonoBehaviour
 {
-    [SerializeField] private float lineOfSight = 5.0f;
-    [SerializeField] private float movementSpeed = 10.0f;
-    [SerializeField] private float destroyAfterDelay = 0.5f;
-    private Transform player;
+    private Rigidbody2D rb;
+    private float speed = 2.0f;
+    private float moveInterval = 2.0f; // Time between movement changes
+    private bool facingRight = true;
+    private float nextMovementTime = 0.0f; // Time of next movement change
     private Animator animator;
 
-    private void Start()
+    void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        nextMovementTime = Time.time + moveInterval;
     }
 
-    private void Update()
+    void Update()
     {
-        if (player == null)
-            return;
-        float distanceToPlayer = Vector2.Distance(player.position, transform.position);
-        if (distanceToPlayer < lineOfSight)
+        if (Time.time >= nextMovementTime)
         {
-            animator.Play("Attack");
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+            MoveRandomly();
+            FlipFacingDirection();
+            nextMovementTime = Time.time + moveInterval;
         }
-        else if (distanceToPlayer > lineOfSight)
-        {
-            animator.Play("Patrol");
-        }
-        Flip();
     }
-    private void Flip()
+
+    private void MoveRandomly()
     {
-        if (transform.position.x > player.transform.position.x)
+        float direction = Random.Range(-1.0f, 1.0f);
+        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+    }
+
+    private void FlipFacingDirection()
+    {
+        if (rb.velocity.x < 0 && facingRight)
         {
             transform.rotation = Quaternion.Euler(0, 180f, 0f);
+            facingRight = false;
         }
-        else
+        else if (rb.velocity.x > 0 && !facingRight)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0, 0f, 0f);
+            facingRight = true;
         }
     }
 
@@ -48,7 +52,10 @@ public class Beelzebub : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             animator.Play("Death");
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            GetComponent<Collider2D>().enabled = false;
             collision.gameObject.GetComponent<Player>().DestroyAndRespawn();
+            DestroyEnemy();
         }
     }
 

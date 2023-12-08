@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1496010717}
   - component: {fileID: 1496010716}
   - component: {fileID: 2846730946742323194}
+  - component: {fileID: 3922068171703937970}
   m_Layer: 0
   m_Name: Stingbite
   m_TagString: Stingbite
@@ -142,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.004591346, y: 0.5280091}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.58, y: 1.47}
+  m_Size: {x: 1.8444569, y: 0.4139818}
   m_EdgeRadius: 0
 --- !u!114 &2846730946742323194
 MonoBehaviour:
@@ -167,3 +168,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd2dc14d88a2694199ea137853ae37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 10
+  destroyAfterDelay: 0
+  moveInterval: 2
+  rayOrigin: {fileID: 0}
+--- !u!61 &3922068171703937970
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8809627559710470743}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.027548552, y: -0.17447257}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.58, y: 1.47}
+    newSize: {x: 3.58, y: 1.47}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5698957, y: 0.8088412}
+  m_EdgeRadius: 0

@@ -13,6 +13,9 @@ TagManager:
   - Light Orb
   - Hidden Light Orb
   - Spike
+  - Spawnpoint
+  - Dark Orb
+  - SceneHandler
   layers:
   - Default
   - TransparentFX

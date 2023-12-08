@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.IO;
+
 public class Player : MonoBehaviour
 {
     #region Singleton
@@ -165,6 +167,70 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Chapter Progress
+    private bool isPrologueCompleted;
+    private bool isChapterOneCompleted;
+    private bool isChapterTwoCompleted;
+    private bool isChapterThreeCompleted;
+    private bool isChapterFourCompleted;
+    private bool isChapterFiveCompleted;
+    private bool isEpilogueCompleted;
+    private bool isGameCompleted;
+    #endregion
+
+    #region Chapter Getter And Setter
+    public bool IsPrologueCompleted
+    {
+        get { return isPrologueCompleted; }
+        set { isPrologueCompleted = value; }
+    }
+
+    public bool IsChapterOneCompleted
+    {
+        get { return isChapterOneCompleted; }
+        set { isChapterOneCompleted = value; }
+    }
+
+    public bool IsChapterTwoCompleted
+    {
+        get { return isChapterTwoCompleted; }
+        set { isChapterTwoCompleted = value; }
+    }
+
+    public bool IsChapterThreeCompleted
+    {
+        get { return isChapterThreeCompleted; }
+        set { isChapterThreeCompleted = value; }
+    }
+
+    public bool IsChapterFourCompleted
+    {
+        get { return isChapterFourCompleted; }
+        set { isChapterFourCompleted = value; }
+    }
+
+    public bool IsChapterFiveCompleted
+    {
+        get { return isChapterFiveCompleted; }
+        set { isChapterFiveCompleted = value; }
+    }
+
+    public bool IsEpilogueCompleted
+    {
+        get { return isEpilogueCompleted; }
+        set { isEpilogueCompleted = value; }
+    }
+
+    public bool IsGameCompleted
+    {
+        get { return isGameCompleted; }
+        set
+        {
+            isGameCompleted = value;
+        }
+    }
+    #endregion
+
     #region Unity MonoBehaviour functions
     private void Awake()
     {
@@ -173,6 +239,8 @@ public class Player : MonoBehaviour
         box = GetComponent<BoxCollider2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         achievementManager = FindObjectOfType<AchievementManager>();
+
+        CreatePlayerStatsJSON();
     }
 
     private void Start()
@@ -187,6 +255,8 @@ public class Player : MonoBehaviour
         }
         lastInputTime = Time.time;
         currentIdleTimer = 0.0f;
+
+        LoadPlayerStats();
     }
     private void Update()
     {
@@ -248,8 +318,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Light Orb"))
         {
             GetLightOrbCounter += 1;
-            lightOrbCount.SetText(GetLightOrbCounter.ToString());
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Dark Orb"))
+        {
+            deathCount += 1;
+            DestroyAndRespawn();
         }
 
         if (collision.gameObject.CompareTag("Hidden Light Orb"))
@@ -271,6 +346,12 @@ public class Player : MonoBehaviour
             deathCount += 1;
             DestroyAndRespawn();
         }
+
+        if (collision.gameObject.CompareTag("SceneHandler"))
+        {
+            SavePlayerStats();
+            collision.GetComponent<SceneHandler>().LoadScene();
+        }
     }
 
     private bool IsGrounded()
@@ -280,6 +361,7 @@ public class Player : MonoBehaviour
 
     public void DestroyAndRespawn()
     {
+        SavePlayerStats();
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("isDead");
     }
@@ -325,7 +407,7 @@ public class Player : MonoBehaviour
 
     private void ShowAdventurerAchievement()
     {
-        if (gameManager.IsGameCompleted == true && !PlayerPrefs.HasKey(adventurerKey))
+        if (IsGameCompleted == true && !PlayerPrefs.HasKey(adventurerKey))
         {
             achievementManager.ShowNotification(Achievements.ADVENTURER);
             PlayerPrefs.SetInt(adventurerKey, 1);
@@ -334,7 +416,7 @@ public class Player : MonoBehaviour
 
     private void ShowAscensionAchievement()
     {
-        if (gameManager.IsChapterFourCompleted == true && !PlayerPrefs.HasKey(ascensionKey))
+        if (IsChapterFourCompleted == true && !PlayerPrefs.HasKey(ascensionKey))
         {
             achievementManager.ShowNotification(Achievements.ASCENSION);
             PlayerPrefs.SetInt(ascensionKey, 1);
@@ -343,7 +425,7 @@ public class Player : MonoBehaviour
 
     private void ShowAwakeningAchievement()
     {
-        if (gameManager.IsPrologueCompleted == true && !PlayerPrefs.HasKey(awakeningKey))
+        if (IsPrologueCompleted == true && !PlayerPrefs.HasKey(awakeningKey))
         {
             achievementManager.ShowNotification(Achievements.AWAKENING);
             PlayerPrefs.SetInt(awakeningKey, 1);
@@ -352,7 +434,7 @@ public class Player : MonoBehaviour
 
     private void ShowConfrontationAchievement()
     {
-        if (gameManager.IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(confrontationKey))
+        if (IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(confrontationKey))
         {
             achievementManager.ShowNotification(Achievements.CONFRONTATION);
             PlayerPrefs.SetInt(confrontationKey, 1);
@@ -379,7 +461,7 @@ public class Player : MonoBehaviour
 
     private void ShowEntrapmentAchievement()
     {
-        if (gameManager.IsChapterTwoCompleted == true && !PlayerPrefs.HasKey(entrapmentKey))
+        if (IsChapterTwoCompleted == true && !PlayerPrefs.HasKey(entrapmentKey))
         {
             achievementManager.ShowNotification(Achievements.ENTRAPMENT);
             PlayerPrefs.SetInt(entrapmentKey, 1);
@@ -388,7 +470,7 @@ public class Player : MonoBehaviour
 
     private void ShowEquilibriumAchievement()
     {
-        if (gameManager.IsEpilogueCompleted == true && !PlayerPrefs.HasKey(equilibriumKey))
+        if (IsEpilogueCompleted == true && !PlayerPrefs.HasKey(equilibriumKey))
         {
             achievementManager.ShowNotification(Achievements.EQUILIBRIUM);
             PlayerPrefs.SetInt(equilibriumKey, 1);
@@ -443,16 +525,16 @@ public class Player : MonoBehaviour
     {
         if (currentIdleTimer >= idleMaxTimer && !PlayerPrefs.HasKey(noRushKey))
         {
-            achievementManager.ShowNotification(Achievements.HEROS_TRIUMPH);
+            achievementManager.ShowNotification(Achievements.NO_RUSH);
             PlayerPrefs.SetInt(noRushKey, 1);
         }
     }
 
     private void ShowPacifistAchievement()
     {
-        if (GetEnemyKillCount <= 0 && gameManager.IsChapterOneCompleted == true
-            || gameManager.IsChapterTwoCompleted == true || gameManager.IsChapterThreeCompleted == true
-            || gameManager.IsChapterFourCompleted == true || gameManager.IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistKey))
+        if (GetEnemyKillCount <= 0 && IsChapterOneCompleted == true
+            || IsChapterTwoCompleted == true || IsChapterThreeCompleted == true
+            || IsChapterFourCompleted == true || IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistKey))
         {
             achievementManager.ShowNotification(Achievements.PACIFIST);
             PlayerPrefs.SetInt(pacifistKey, 1);
@@ -461,9 +543,9 @@ public class Player : MonoBehaviour
 
     private void ShowPacifistRouteAchievement()
     {
-        if (GetEnemyKillCount <= 0 && gameManager.IsChapterOneCompleted == true
-            || gameManager.IsChapterTwoCompleted == true || gameManager.IsChapterThreeCompleted == true
-            || gameManager.IsChapterFourCompleted == true || gameManager.IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistRouteKey))
+        if (GetEnemyKillCount <= 0 && IsChapterOneCompleted == true
+            || IsChapterTwoCompleted == true || IsChapterThreeCompleted == true
+            || IsChapterFourCompleted == true || IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistRouteKey))
         {
             achievementManager.ShowNotification(Achievements.PACIFIST_ROUTE);
             PlayerPrefs.SetInt(pacifistRouteKey, 1);
@@ -481,7 +563,7 @@ public class Player : MonoBehaviour
 
     private void ShowRevelationAchievement()
     {
-        if (gameManager.IsChapterThreeCompleted == true && !PlayerPrefs.HasKey(revelationKey))
+        if (IsChapterThreeCompleted == true && !PlayerPrefs.HasKey(revelationKey))
         {
             achievementManager.ShowNotification(Achievements.REVELATION);
             PlayerPrefs.SetInt(revelationKey, 1);
@@ -500,10 +582,10 @@ public class Player : MonoBehaviour
     private void ShowSpeedrunnerAchievement()
     {
         if (GetHiddenLightOrbCounter < 0 && GetLightOrbCounter < 0 &&
-            gameManager.IsPrologueCompleted == true && gameManager.IsChapterOneCompleted == true
-            && gameManager.IsChapterTwoCompleted == true && gameManager.IsChapterThreeCompleted == true
-            && gameManager.IsChapterFourCompleted == true && gameManager.IsChapterFiveCompleted == true
-            && gameManager.IsEpilogueCompleted == true
+            IsPrologueCompleted == true && IsChapterOneCompleted == true
+            && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
+            && IsChapterFourCompleted == true && IsChapterFiveCompleted == true
+            && IsEpilogueCompleted == true
             && !PlayerPrefs.HasKey(speedrunnerKey))
         {
             achievementManager.ShowNotification(Achievements.SPEEDRUNNER);
@@ -513,10 +595,10 @@ public class Player : MonoBehaviour
 
     private void ShowStoryConquerorAchievement()
     {
-        if (gameManager.IsPrologueCompleted == true && gameManager.IsChapterOneCompleted == true
-            && gameManager.IsChapterTwoCompleted == true && gameManager.IsChapterThreeCompleted == true
-            && gameManager.IsChapterFourCompleted == true && gameManager.IsChapterFiveCompleted == true
-            && gameManager.IsEpilogueCompleted == true && !PlayerPrefs.HasKey(storyConquerorKey))
+        if (IsPrologueCompleted == true && IsChapterOneCompleted == true
+            && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
+            && IsChapterFourCompleted == true && IsChapterFiveCompleted == true
+            && IsEpilogueCompleted == true && !PlayerPrefs.HasKey(storyConquerorKey))
         {
             achievementManager.ShowNotification(Achievements.STORY_CONQUEROR);
             PlayerPrefs.SetInt(storyConquerorKey, 1);
@@ -536,10 +618,10 @@ public class Player : MonoBehaviour
     {
         if (GetDeathCount < 0 && GetDeathCountFromTraps < 0
             && GetLightOrbCounter > 36 && GetHiddenLightOrbCounter > 4
-            && gameManager.IsChapterOneCompleted == true
-            && gameManager.IsChapterTwoCompleted == true && gameManager.IsChapterThreeCompleted == true
-            && gameManager.IsChapterFourCompleted == true && gameManager.IsChapterFiveCompleted == true
-            && gameManager.IsEpilogueCompleted == true && IsMagusDefeated == true
+            && IsChapterOneCompleted == true
+            && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
+            && IsChapterFourCompleted == true && IsChapterFiveCompleted == true
+            && IsEpilogueCompleted == true && IsMagusDefeated == true
             && IsShadowLilaDefeated == true && !PlayerPrefs.HasKey(ultimateChallengeKey))
         {
             achievementManager.ShowNotification(Achievements.ULTIMATE_CHALLENGE);
@@ -585,7 +667,7 @@ public class Player : MonoBehaviour
 
     private void ShowUnyieldingAchievement()
     {
-        if (gameManager.IsChapterOneCompleted == true && !PlayerPrefs.HasKey(unyieldingKey))
+        if (IsChapterOneCompleted == true && !PlayerPrefs.HasKey(unyieldingKey))
         {
             achievementManager.ShowNotification(Achievements.UNYIELDING);
             PlayerPrefs.SetInt(unyieldingKey, 1);
@@ -593,4 +675,93 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
+    #region Create, Save and Load
+    private void CreatePlayerStatsJSON()
+    {
+        string saveFilePath = Application.persistentDataPath + "/playerStats.json";
+        if (!File.Exists(saveFilePath))
+        {
+            var playerStatsData = new PlayerStatsData();
+            string jsonString = JsonUtility.ToJson(playerStatsData, true);
+            File.WriteAllText(saveFilePath, jsonString);
+        }
+    }
+
+    public void SavePlayerStats()
+    {
+        var dataToSave = new PlayerStatsData
+        {
+            enemyKillCount = enemyKillCount,
+            deathCount = deathCount,
+            deathCountFromTraps = deathCountFromTraps,
+            isMagusDefeated = isMagusDefeated,
+            isShadowLilaDefeated = isShadowLilaDefeated,
+            lightOrbCounter = lightOrbCounter,
+            hiddenLightOrbCounter = hiddenLightOrbCounter,
+            isPrologueCompleted = isPrologueCompleted,
+            isChapterOneCompleted = isChapterOneCompleted,
+            isChapterTwoCompleted = isChapterTwoCompleted,
+            isChapterThreeCompleted = isChapterThreeCompleted,
+            isChapterFourCompleted = isChapterFourCompleted,
+            isChapterFiveCompleted = isChapterFiveCompleted,
+            isEpilogueCompleted = isEpilogueCompleted,
+            isGameCompleted = isGameCompleted,
+        };
+
+        string jsonString = JsonUtility.ToJson(dataToSave, true);
+
+        string saveFilePath = Application.persistentDataPath + "/playerStats.json";
+
+        File.WriteAllText(saveFilePath, jsonString);
+    }
+    public void LoadPlayerStats()
+    {
+        string saveFilePath = Application.persistentDataPath + "/playerStats.json";
+
+        if (!File.Exists(saveFilePath))
+        {
+            return;
+        }
+
+        string jsonString = File.ReadAllText(saveFilePath);
+        var playerStats = JsonUtility.FromJson<PlayerStatsData>(jsonString);
+
+        enemyKillCount = playerStats.enemyKillCount;
+        deathCount = playerStats.deathCount;
+        deathCountFromTraps = playerStats.deathCountFromTraps;
+        isMagusDefeated = playerStats.isMagusDefeated;
+        isShadowLilaDefeated = playerStats.isShadowLilaDefeated;
+        lightOrbCounter = playerStats.lightOrbCounter;
+        hiddenLightOrbCounter = playerStats.hiddenLightOrbCounter;
+        isPrologueCompleted = playerStats.isPrologueCompleted;
+        isChapterOneCompleted = playerStats.isChapterOneCompleted;
+        isChapterTwoCompleted = playerStats.isChapterTwoCompleted;
+        isChapterThreeCompleted = playerStats.isChapterThreeCompleted;
+        isChapterFourCompleted = playerStats.isChapterFourCompleted;
+        isChapterFiveCompleted = playerStats.isChapterFiveCompleted;
+        isEpilogueCompleted = playerStats.isEpilogueCompleted;
+        isGameCompleted = playerStats.isGameCompleted;
+    }
+    #endregion
+}
+
+[System.Serializable]
+public class PlayerStatsData
+{
+    public int enemyKillCount;
+    public int deathCount;
+    public int deathCountFromTraps;
+    public bool isMagusDefeated;
+    public bool isShadowLilaDefeated;
+    public int lightOrbCounter;
+    public int hiddenLightOrbCounter;
+    public bool isPrologueCompleted;
+    public bool isChapterOneCompleted;
+    public bool isChapterTwoCompleted;
+    public bool isChapterThreeCompleted;
+    public bool isChapterFourCompleted;
+    public bool isChapterFiveCompleted;
+    public bool isEpilogueCompleted;
+    public bool isGameCompleted;
 }

@@ -9,33 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8ddcf36b5e8b2134f83268f9e18fde41
   - enabled: 1
-    path: Assets/Scenes/Debug/PersistentScene.unity
-    guid: 66832e178ed9c1b49bbc217c637a5666
-  - enabled: 1
     path: Assets/Scenes/Gameplay/Prologue.unity
     guid: e6afcf203a8d93e42855d7f61e30e928
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 1.unity
-    guid: 8d71d81eff1877745bf1586249bdb855
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 2.unity
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/ChapterOne.unity
+    guid: b90222b764a7dda4082bbcf416b6be25
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/ChapterTwo.unity
     guid: cd3e32a735d426a42b9d82838055e26e
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 3.unity
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/ChapterThree.unity
     guid: 1f9a40b9d6351b043bdea987b8682bc0
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 3 - Elite.unity
-    guid: dece8a8a3a0a40b40b41682a9349510a
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 4.unity
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/ChapterFour.unity
     guid: edef9f7adc7f3a248a5d06d77655335a
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 5.unity
-    guid: 4302f1dde58d4ef44aa0ca7a28ce633a
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Chapter 5 - Final.unity
-    guid: 21900d762535a3c49b827fd72fa1d007
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/Epilogue.unity
-    guid: 356a9998a9c18284eaa99c76ae0be57c
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/ChapterFive.unity
+    guid: e90cbe31ccef84142a4d7c81b4466a8b
   m_configObjects: {}
