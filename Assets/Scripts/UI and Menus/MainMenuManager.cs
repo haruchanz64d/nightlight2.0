@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Debug Room");
+        SceneManager.LoadScene("Prologue");
     }
 
     public void ShowMenu()

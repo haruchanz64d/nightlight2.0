@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 3295665769454679910}
   - component: {fileID: 3295665769454679911}
   - component: {fileID: 3295665769454679908}
-  - component: {fileID: 267609491}
-  - component: {fileID: 8351380627240582042}
   m_Layer: 7
   m_Name: Lila
   m_TagString: Player
@@ -175,27 +173,3 @@ MonoBehaviour:
   isFacingRight: 1
   jumpForce: 15
   movementSpeed: 16
---- !u!114 &267609491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3295665769454679930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc9a034ce336134d9499e2f7bc8fc28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8351380627240582042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3295665769454679930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc71827fe7d20240a3e8eab8c7043fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

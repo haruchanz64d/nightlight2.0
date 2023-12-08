@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8ddcf36b5e8b2134f83268f9e18fde41
   - enabled: 1
-    path: Assets/Scenes/Debug/Debug Room.unity
+    path: Assets/Scenes/Debug/PersistentScene.unity
     guid: 66832e178ed9c1b49bbc217c637a5666
   - enabled: 1
     path: Assets/Scenes/Gameplay/Prologue.unity

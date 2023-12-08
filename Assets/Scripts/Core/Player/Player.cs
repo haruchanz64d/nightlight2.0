@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class Player : MonoBehaviour
 {
     #region Singleton
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D box;
+    [SerializeField] private TextMeshProUGUI lightOrbCount;
     #endregion
 
     #region Managers
@@ -233,13 +235,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Light Orb"))
         {
             GetLightOrbCounter += 1;
-            DestroyAndRespawn();
+            lightOrbCount.SetText(GetLightOrbCounter.ToString());
         }
 
         if (collision.gameObject.CompareTag("Hidden Light Orb"))
         {
             GetHiddenLightOrbCounter += 1;
-            DestroyAndRespawn();
+            lightOrbCount.SetText(GetHiddenLightOrbCounter.ToString());
         }
 
         if (collision.gameObject.CompareTag("Spike"))

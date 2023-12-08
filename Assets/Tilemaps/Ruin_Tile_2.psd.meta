@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: ba56e2d326b320a41a740478dcd6d4b6
+guid: d2f5597ffd7b9cf4f9ec78ee101e3310
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3722053006907187038
+    second: Ruin_Tile_2_0
+  - first:
+      213: -5640238407474122328
+    second: Ruin_Tile_2_1
+  - first:
+      213: 5592695992590054260
+    second: Ruin_Tile_2_2
+  - first:
+      213: -5928062520622351998
+    second: Ruin_Tile_2_3
+  - first:
+      213: 8688604361427498848
+    second: Ruin_Tile_2_4
+  - first:
+      213: -2012781340861017485
+    second: Ruin_Tile_2_5
+  - first:
+      213: -8183707928585295001
+    second: Ruin_Tile_2_6
+  - first:
+      213: 957349377744774763
+    second: Ruin_Tile_2_7
+  - first:
+      213: -8215727015072910481
+    second: Ruin_Tile_2_8
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -90,7 +117,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Ruin_Tile_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 257
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f90ef4d7367a330800000000000000
+      internalID: 3722053006907187038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 257
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a17df93d09d9b1b0800000000000000
+      internalID: -5640238407474122328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 257
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473b417bf5f3d9d40800000000000000
+      internalID: 5592695992590054260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2897ff3bb8a4bbda0800000000000000
+      internalID: -5928062520622351998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 129
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067bbcce1af149870800000000000000
+      internalID: 8688604361427498848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 129
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372d17fd80a2114e0800000000000000
+      internalID: -2012781340861017485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b20238ff0ad6e80800000000000000
+      internalID: -8183707928585295001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b662b62df20394d00800000000000000
+      internalID: 957349377744774763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruin_Tile_2_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63bffefecfdbfd80800000000000000
+      internalID: -8215727015072910481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
