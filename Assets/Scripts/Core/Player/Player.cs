@@ -250,6 +250,12 @@ public class Player : MonoBehaviour
             deathCount += 1;
             DestroyAndRespawn();
         }
+
+        if (collision.gameObject.CompareTag("Kill Plane"))
+        {
+            deathCount += 1;
+            DestroyAndRespawn();
+        }
     }
 
     private bool IsGrounded()
