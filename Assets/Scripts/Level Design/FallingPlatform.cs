@@ -4,14 +4,17 @@ namespace LunarflyArts
 {
     public class FallingPlatform : MonoBehaviour
     {
+        [SerializeField] private GameObject fallingPlatformPrefab;
+        private Vector2 initPosition;
         private float fallDelay = 2.5f;
         private float destroyDelay = 0.5f;
-
         Rigidbody2D rb;
 
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+
+            initPosition = transform.position;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -26,7 +29,9 @@ namespace LunarflyArts
         {
             yield return new WaitForSeconds(fallDelay);
             rb.bodyType = RigidbodyType2D.Dynamic;
-            Destroy(gameObject, destroyDelay);
+            yield return new WaitForSeconds(destroyDelay);
+            Destroy(gameObject);
+            Instantiate(fallingPlatformPrefab, initPosition, Quaternion.identity);
         }
     }
 }

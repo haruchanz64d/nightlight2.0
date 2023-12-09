@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.IO;
-
+using System.Collections;
 public class Player : MonoBehaviour
 {
     #region Random Variables
@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
             lastCheckpointPosition = value;
         }
     }
-
 
     private bool isInteractedOnce = false;
     #endregion
@@ -74,6 +73,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D box;
+    private TrailRenderer trailRenderer;
     [SerializeField] private TextMeshProUGUI lightOrbCount;
     [SerializeField] private TextMeshProUGUI scorePointText;
     [SerializeField] private Transform spawnPoint;
@@ -92,6 +92,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float movementSpeed = 7.5f;
     private int jumpCount = 0;
+
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 24f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
     #endregion
 
     #region Getters & Setters
@@ -259,6 +265,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
         box = GetComponent<BoxCollider2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         achievementManager = FindObjectOfType<AchievementManager>();
@@ -287,6 +294,8 @@ public class Player : MonoBehaviour
 
         LoadPlayerStats();
     }
+
+
     private void Update()
     {
         if (gameManager.IsGamePaused == true) return;
@@ -303,6 +312,11 @@ public class Player : MonoBehaviour
         scorePointText.SetText($"Score: {scorePoint}");
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
+    }
+
     private void LateUpdate()
     {
         AchivementCollection();
@@ -312,8 +326,8 @@ public class Player : MonoBehaviour
     #region Movement
     private void HandleInput()
     {
+        if (isDashing) return;
         movement = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.C) && IsGrounded())
         {
@@ -330,6 +344,29 @@ public class Player : MonoBehaviour
         {
             gameManager.OnPause();
         }
+
+        if (Input.GetKeyDown(KeyCode.X) && canDash)
+        {
+            StartCoroutine(HandleDash());
+        }
+    }
+    #endregion
+
+    #region Dashing
+    private IEnumerator HandleDash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        trailRenderer.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
     #endregion
 
@@ -460,6 +497,7 @@ public class Player : MonoBehaviour
 
     private void ShowAdventurerAchievement()
     {
+        if (PlayerPrefs.HasKey(adventurerKey)) return;
         if (IsGameCompleted == true && !PlayerPrefs.HasKey(adventurerKey))
         {
             achievementManager.ShowNotification(Achievements.ADVENTURER);
@@ -469,6 +507,7 @@ public class Player : MonoBehaviour
 
     private void ShowAscensionAchievement()
     {
+        if (PlayerPrefs.HasKey(ascensionKey)) return;
         if (IsChapterFourCompleted == true && !PlayerPrefs.HasKey(ascensionKey))
         {
             achievementManager.ShowNotification(Achievements.ASCENSION);
@@ -478,6 +517,7 @@ public class Player : MonoBehaviour
 
     private void ShowAwakeningAchievement()
     {
+        if (PlayerPrefs.HasKey(awakeningKey)) return;
         if (IsPrologueCompleted == true && !PlayerPrefs.HasKey(awakeningKey))
         {
             achievementManager.ShowNotification(Achievements.AWAKENING);
@@ -487,6 +527,7 @@ public class Player : MonoBehaviour
 
     private void ShowConfrontationAchievement()
     {
+        if (PlayerPrefs.HasKey(confrontationKey)) return;
         if (IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(confrontationKey))
         {
             achievementManager.ShowNotification(Achievements.CONFRONTATION);
@@ -496,6 +537,7 @@ public class Player : MonoBehaviour
 
     private void ShowEagleEyeAchievement()
     {
+        if (PlayerPrefs.HasKey(eagleEyeKey)) return;
         if (GetHiddenLightOrbCounter >= 1 && !PlayerPrefs.HasKey(eagleEyeKey))
         {
             achievementManager.ShowNotification(Achievements.EAGLE_EYE);
@@ -505,6 +547,7 @@ public class Player : MonoBehaviour
 
     private void ShowEnemyEradicatorAchievement()
     {
+        if (PlayerPrefs.HasKey(enemyEradicatorKey)) return;
         if (GetEnemyKillCount >= 30 && !PlayerPrefs.HasKey(enemyEradicatorKey))
         {
             achievementManager.ShowNotification(Achievements.ENEMY_ERADICATOR);
@@ -514,6 +557,7 @@ public class Player : MonoBehaviour
 
     private void ShowEntrapmentAchievement()
     {
+        if (PlayerPrefs.HasKey(entrapmentKey)) return;
         if (IsChapterTwoCompleted == true && !PlayerPrefs.HasKey(entrapmentKey))
         {
             achievementManager.ShowNotification(Achievements.ENTRAPMENT);
@@ -523,6 +567,7 @@ public class Player : MonoBehaviour
 
     private void ShowEquilibriumAchievement()
     {
+        if (PlayerPrefs.HasKey(equilibriumKey)) return;
         if (IsEpilogueCompleted == true && !PlayerPrefs.HasKey(equilibriumKey))
         {
             achievementManager.ShowNotification(Achievements.EQUILIBRIUM);
@@ -532,6 +577,7 @@ public class Player : MonoBehaviour
 
     private void ShowFirstStrikeAchievement()
     {
+        if (PlayerPrefs.HasKey(firstStrikeKey)) return;
         if (GetEnemyKillCount >= 1 && !PlayerPrefs.HasKey(firstStrikeKey))
         {
             achievementManager.ShowNotification(Achievements.FIRST_STRIKE);
@@ -541,7 +587,8 @@ public class Player : MonoBehaviour
 
     private void ShowFlawlessVictoryAchievement()
     {
-        if (IsMagusDefeated == true && GetDeathCount == 0 && !PlayerPrefs.HasKey(flawlessVictoryKey))
+        if (PlayerPrefs.HasKey(flawlessVictoryKey)) return;
+        if (IsMagusDefeated == true && GetDeathCount <= 0 && !PlayerPrefs.HasKey(flawlessVictoryKey))
         {
             achievementManager.ShowNotification(Achievements.FLAWLESS_VICTORY);
             PlayerPrefs.SetInt(flawlessVictoryKey, 1);
@@ -550,6 +597,7 @@ public class Player : MonoBehaviour
 
     private void ShowHeroTriumphedAchievement()
     {
+        if (PlayerPrefs.HasKey(herosTriumphKey)) return;
         if (IsMagusDefeated == true && !PlayerPrefs.HasKey(herosTriumphKey))
         {
             achievementManager.ShowNotification(Achievements.HEROS_TRIUMPH);
@@ -559,6 +607,7 @@ public class Player : MonoBehaviour
 
     private void ShowJumpMasterAchievement()
     {
+        if (PlayerPrefs.HasKey(jumpMasterKey)) return;
         if (GetJumpCount >= 300 && !PlayerPrefs.HasKey(jumpMasterKey))
         {
             achievementManager.ShowNotification(Achievements.JUMP_MASTER);
@@ -568,6 +617,7 @@ public class Player : MonoBehaviour
 
     private void ShowLightOrbCollectorAchievement()
     {
+        if (PlayerPrefs.HasKey(lightOrbCollectorKey)) return;
         if (GetLightOrbCounter > 36 && GetHiddenLightOrbCounter > 4 && !PlayerPrefs.HasKey(lightOrbCollectorKey))
         {
             achievementManager.ShowNotification(Achievements.LIGHT_ORB_COLLECTOR);
@@ -576,6 +626,7 @@ public class Player : MonoBehaviour
     }
     private void ShowNoRushAchievement()
     {
+        if (PlayerPrefs.HasKey(noRushKey)) return;
         if (currentIdleTimer >= idleMaxTimer && !PlayerPrefs.HasKey(noRushKey))
         {
             achievementManager.ShowNotification(Achievements.NO_RUSH);
@@ -585,6 +636,7 @@ public class Player : MonoBehaviour
 
     private void ShowPacifistAchievement()
     {
+        if (PlayerPrefs.HasKey(pacifistKey)) return;
         if (GetEnemyKillCount <= 0 && IsChapterOneCompleted == true
             || IsChapterTwoCompleted == true || IsChapterThreeCompleted == true
             || IsChapterFourCompleted == true || IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistKey))
@@ -596,6 +648,7 @@ public class Player : MonoBehaviour
 
     private void ShowPacifistRouteAchievement()
     {
+        if (PlayerPrefs.HasKey(pacifistRouteKey)) return;
         if (GetEnemyKillCount <= 0 && IsChapterOneCompleted == true
             || IsChapterTwoCompleted == true || IsChapterThreeCompleted == true
             || IsChapterFourCompleted == true || IsChapterFiveCompleted == true && !PlayerPrefs.HasKey(pacifistRouteKey))
@@ -607,7 +660,8 @@ public class Player : MonoBehaviour
 
     private void ShowPeakClimberAchievement()
     {
-        if (SceneManager.GetActiveScene().name == "Chapter 5" && !PlayerPrefs.HasKey(peakClimberKey))
+        if (PlayerPrefs.HasKey(peakClimberKey)) return;
+        if (SceneManager.GetActiveScene().name == "ChapterFive" && !PlayerPrefs.HasKey(peakClimberKey))
         {
             achievementManager.ShowNotification(Achievements.PEAK_CLIMBER);
             PlayerPrefs.SetInt(peakClimberKey, 1);
@@ -616,6 +670,7 @@ public class Player : MonoBehaviour
 
     private void ShowRevelationAchievement()
     {
+        if (PlayerPrefs.HasKey(revelationKey)) return;
         if (IsChapterThreeCompleted == true && !PlayerPrefs.HasKey(revelationKey))
         {
             achievementManager.ShowNotification(Achievements.REVELATION);
@@ -625,6 +680,7 @@ public class Player : MonoBehaviour
 
     private void ShowSeekerOfHiddenLightAchievement()
     {
+        if (PlayerPrefs.HasKey(seekerOfHiddenLightKey)) return;
         if (GetHiddenLightOrbCounter >= 1 && !PlayerPrefs.HasKey(seekerOfHiddenLightKey))
         {
             achievementManager.ShowNotification(Achievements.SEEKER_OF_HIDDEN__LIGHT);
@@ -634,6 +690,7 @@ public class Player : MonoBehaviour
 
     private void ShowSpeedrunnerAchievement()
     {
+        if (PlayerPrefs.HasKey(speedrunnerKey)) return;
         if (GetHiddenLightOrbCounter < 0 && GetLightOrbCounter < 0 &&
             IsPrologueCompleted == true && IsChapterOneCompleted == true
             && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
@@ -648,6 +705,7 @@ public class Player : MonoBehaviour
 
     private void ShowStoryConquerorAchievement()
     {
+        if (PlayerPrefs.HasKey(storyConquerorKey)) return;
         if (IsPrologueCompleted == true && IsChapterOneCompleted == true
             && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
             && IsChapterFourCompleted == true && IsChapterFiveCompleted == true
@@ -660,6 +718,7 @@ public class Player : MonoBehaviour
 
     private void ShowTrappedNoviceAchievement()
     {
+        if (PlayerPrefs.HasKey(trappedNoviceKey)) return;
         if (GetDeathCountFromTraps >= 1 && !PlayerPrefs.HasKey(trappedNoviceKey))
         {
             achievementManager.ShowNotification(Achievements.TRAPPED_NOVICE);
@@ -669,7 +728,8 @@ public class Player : MonoBehaviour
 
     private void ShowUltimateChallengeAchievement()
     {
-        if (GetDeathCount < 0 && GetDeathCountFromTraps < 0
+        if (PlayerPrefs.HasKey(ultimateChallengeKey)) return;
+        if (GetDeathCount <= 0 && GetDeathCountFromTraps <= 0
             && GetLightOrbCounter > 36 && GetHiddenLightOrbCounter > 4
             && IsChapterOneCompleted == true
             && IsChapterTwoCompleted == true && IsChapterThreeCompleted == true
@@ -684,6 +744,7 @@ public class Player : MonoBehaviour
 
     private void ShowUltimateMasterAchievement()
     {
+        if (PlayerPrefs.HasKey(ultimateMasterKey)) return;
         if (AreAllAchievementsObtained() && !PlayerPrefs.HasKey(ultimateMasterKey))
         {
             achievementManager.ShowNotification(Achievements.ULTIMATE_MASTER);
@@ -720,6 +781,7 @@ public class Player : MonoBehaviour
 
     private void ShowUnyieldingAchievement()
     {
+        if (PlayerPrefs.HasKey(unyieldingKey)) return;
         if (IsChapterOneCompleted == true && !PlayerPrefs.HasKey(unyieldingKey))
         {
             achievementManager.ShowNotification(Achievements.UNYIELDING);
@@ -749,7 +811,6 @@ public class Player : MonoBehaviour
             deathCount = deathCount,
             deathCountFromTraps = deathCountFromTraps,
             isMagusDefeated = isMagusDefeated,
-            isShadowLilaDefeated = isShadowLilaDefeated,
             lightOrbCounter = lightOrbCounter,
             hiddenLightOrbCounter = hiddenLightOrbCounter,
             isPrologueCompleted = isPrologueCompleted,
@@ -784,7 +845,6 @@ public class Player : MonoBehaviour
         deathCount = playerStats.deathCount;
         deathCountFromTraps = playerStats.deathCountFromTraps;
         isMagusDefeated = playerStats.isMagusDefeated;
-        isShadowLilaDefeated = playerStats.isShadowLilaDefeated;
         lightOrbCounter = playerStats.lightOrbCounter;
         hiddenLightOrbCounter = playerStats.hiddenLightOrbCounter;
         isPrologueCompleted = playerStats.isPrologueCompleted;
@@ -806,7 +866,6 @@ public class PlayerStatsData
     public int deathCount;
     public int deathCountFromTraps;
     public bool isMagusDefeated;
-    public bool isShadowLilaDefeated;
     public int lightOrbCounter;
     public int hiddenLightOrbCounter;
     public bool isPrologueCompleted;

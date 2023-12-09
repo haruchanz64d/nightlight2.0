@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c5ab499005ee8438834be472176b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallingPlatformPrefab: {fileID: 2905506726875552692}
 --- !u!61 &8798288567690110188
 BoxCollider2D:
   m_ObjectHideFlags: 0

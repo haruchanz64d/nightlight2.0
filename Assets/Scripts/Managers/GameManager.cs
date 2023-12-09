@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     #region Unity MonoBehaviour functions
     private void Start()
     {
-        pauseCanvas.enabled = false;
+        OnResume();
     }
 
     public void OnPause()
@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         IsGamePaused = true;
         pauseCanvas.enabled = true;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void OnResume()
@@ -31,6 +34,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         IsGamePaused = false;
         pauseCanvas.enabled = false;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OnMenu()

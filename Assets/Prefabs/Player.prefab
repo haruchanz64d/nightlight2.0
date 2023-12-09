@@ -1839,6 +1839,7 @@ Transform:
   - {fileID: 5766212763002476105}
   - {fileID: 5766212764119168383}
   - {fileID: 5766212763452131708}
+  - {fileID: 8358593259759468559}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2744,6 +2745,36 @@ MonoBehaviour:
   achievementDatabase: {fileID: 11400000, guid: 4a905ce58701a2a4c9bf8ee44317e3d6,
     type: 2}
   achievementNotificationController: {fileID: 3405076779970875191}
+--- !u!1 &6203028396640327527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8358593259759468559}
+  m_Layer: 0
+  m_Name: DebugGameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8358593259759468559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203028396640327527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5766212763416160436}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6210883648268912002
 GameObject:
   m_ObjectHideFlags: 0

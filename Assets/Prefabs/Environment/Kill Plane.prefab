@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8364008681051239335}
   - component: {fileID: 1984822294991661503}
   m_Layer: 0
-  m_Name: killplane
+  m_Name: Kill Plane
   m_TagString: Kill Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
