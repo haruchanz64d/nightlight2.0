@@ -5,6 +5,37 @@ using System.IO;
 
 public class Player : MonoBehaviour
 {
+    #region Random Variables
+    private Vector2 lastCheckpointPosition;
+
+    public Vector2 GetLastCheckpointPosition
+    {
+        get
+        {
+            return lastCheckpointPosition;
+        }
+
+        set
+        {
+            lastCheckpointPosition = value;
+        }
+    }
+
+    private bool isInteractedWithCheckpoint;
+
+    public bool IsInteractedWithCheckpoint
+    {
+        get
+        {
+            return isInteractedWithCheckpoint;
+        }
+        set
+        {
+            isInteractedWithCheckpoint = value;
+        }
+    }
+    #endregion
+
     #region Singleton
     private Player instance;
     #endregion
@@ -55,11 +86,13 @@ public class Player : MonoBehaviour
     private Animator animator;
     private BoxCollider2D box;
     [SerializeField] private TextMeshProUGUI lightOrbCount;
+    [SerializeField] private TextMeshProUGUI scorePointText;
     #endregion
 
     #region Managers
     private GameManager gameManager;
     private AchievementManager achievementManager;
+    private CheckpointSystem checkpointSystem;
     #endregion
 
     #region Movement Variables
@@ -239,10 +272,20 @@ public class Player : MonoBehaviour
         box = GetComponent<BoxCollider2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         achievementManager = FindObjectOfType<AchievementManager>();
-
+        checkpointSystem = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<CheckpointSystem>();
         CreatePlayerStatsJSON();
 
-        lightOrbCount.SetText(lightOrbCounter.ToString() + hiddenLightOrbCounter.ToString());
+        int totalLightOrb = lightOrbCounter + hiddenLightOrbCounter;
+
+        lightOrbCount.SetText($"x {totalLightOrb}");
+
+        int scorePoint = totalLightOrb * 100;
+        scorePointText.SetText($"Score: {scorePoint}");
+
+        if (IsInteractedWithCheckpoint)
+        {
+            transform.position = lastCheckpointPosition;
+        }
     }
 
     private void Start()
@@ -270,12 +313,15 @@ public class Player : MonoBehaviour
 
         int totalLightOrb = lightOrbCounter + hiddenLightOrbCounter;
 
-        lightOrbCount.SetText(totalLightOrb.ToString());
+        lightOrbCount.SetText($"x {totalLightOrb}");
+
+        int scorePoint = totalLightOrb * 100;
+        scorePointText.SetText($"Score: {scorePoint}");
     }
 
     private void LateUpdate()
     {
-       AchivementCollection();
+        AchivementCollection();
     }
     #endregion
 
@@ -324,6 +370,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Light Orb"))
         {
             GetLightOrbCounter += 1;
+            collision.gameObject.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
 

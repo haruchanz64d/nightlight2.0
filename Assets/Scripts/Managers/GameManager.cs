@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     #region Global Boolean
     private bool isGamePaused;
-
     public bool IsGamePaused { get { return isGamePaused; } set { isGamePaused = value; } }
     #endregion
 

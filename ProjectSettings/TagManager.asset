@@ -16,6 +16,7 @@ TagManager:
   - Spawnpoint
   - Dark Orb
   - SceneHandler
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
