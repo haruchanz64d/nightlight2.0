@@ -6,9 +6,9 @@ using System.IO;
 public class Player : MonoBehaviour
 {
     #region Random Variables
-    private Vector2 lastCheckpointPosition;
+    private Vector3 lastCheckpointPosition;
 
-    public Vector2 GetLastCheckpointPosition
+    public Vector3 GetLastCheckpointPosition
     {
         get
         {
@@ -21,19 +21,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool isInteractedWithCheckpoint;
 
-    public bool IsInteractedWithCheckpoint
-    {
-        get
-        {
-            return isInteractedWithCheckpoint;
-        }
-        set
-        {
-            isInteractedWithCheckpoint = value;
-        }
-    }
+    private bool isInteractedOnce = false;
     #endregion
 
     #region Singleton
@@ -87,6 +76,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D box;
     [SerializeField] private TextMeshProUGUI lightOrbCount;
     [SerializeField] private TextMeshProUGUI scorePointText;
+    [SerializeField] private Transform spawnPoint;
     #endregion
 
     #region Managers
@@ -274,18 +264,12 @@ public class Player : MonoBehaviour
         achievementManager = FindObjectOfType<AchievementManager>();
         checkpointSystem = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<CheckpointSystem>();
         CreatePlayerStatsJSON();
-
         int totalLightOrb = lightOrbCounter + hiddenLightOrbCounter;
 
         lightOrbCount.SetText($"x {totalLightOrb}");
 
         int scorePoint = totalLightOrb * 100;
         scorePointText.SetText($"Score: {scorePoint}");
-
-        if (IsInteractedWithCheckpoint)
-        {
-            transform.position = lastCheckpointPosition;
-        }
     }
 
     private void Start()
@@ -404,6 +388,14 @@ public class Player : MonoBehaviour
             SavePlayerStats();
             collision.GetComponent<SceneHandler>().LoadScene();
         }
+
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            if (isInteractedOnce) return;
+            lastCheckpointPosition = collision.gameObject.transform.position;
+            collision.GetComponent<AudioSource>().Play();
+            isInteractedOnce = true;
+        }
     }
 
     private bool IsGrounded()
@@ -415,13 +407,23 @@ public class Player : MonoBehaviour
     {
         SavePlayerStats();
         rb.bodyType = RigidbodyType2D.Static;
-        animator.SetTrigger("isDead");
+        ResetLevel();
     }
 
     public void ResetLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (isInteractedOnce)
+        {
+            transform.position = GetLastCheckpointPosition;
+
+        }
+        else
+        {
+            transform.position = spawnPoint.position;
+        }
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
+
     #endregion
 
     #region Achievement Collection
