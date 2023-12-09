@@ -241,6 +241,8 @@ public class Player : MonoBehaviour
         achievementManager = FindObjectOfType<AchievementManager>();
 
         CreatePlayerStatsJSON();
+
+        lightOrbCount.SetText(lightOrbCounter.ToString() + hiddenLightOrbCounter.ToString());
     }
 
     private void Start()
@@ -265,6 +267,10 @@ public class Player : MonoBehaviour
         FlipAndAnimate();
 
         currentIdleTimer = Time.time - lastInputTime;
+
+        int totalLightOrb = lightOrbCounter + hiddenLightOrbCounter;
+
+        lightOrbCount.SetText(totalLightOrb.ToString());
     }
 
     private void LateUpdate()
@@ -330,7 +336,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Hidden Light Orb"))
         {
             GetHiddenLightOrbCounter += 1;
-            lightOrbCount.SetText(GetHiddenLightOrbCounter.ToString());
             Destroy(collision.gameObject);
         }
 

@@ -39,5 +39,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OnRetry()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(ReloadSceneAsync());
+    }
+
+    IEnumerator ReloadSceneAsync()
+    {
+        yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        yield return null;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+    }
     #endregion
 }
