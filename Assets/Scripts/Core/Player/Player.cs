@@ -415,7 +415,6 @@ public class Player : MonoBehaviour
         if (isInteractedOnce)
         {
             transform.position = GetLastCheckpointPosition;
-
         }
         else
         {
