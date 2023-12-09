@@ -2981,7 +2981,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 309864038}
         m_TargetAssemblyTypeName: ClearPlayerData, Assembly-CSharp
-        m_MethodName: ClearPlayerPrefs
+        m_MethodName: ClearPlayerDataJson
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
