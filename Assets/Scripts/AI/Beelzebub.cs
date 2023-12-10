@@ -3,64 +3,66 @@ using System.Collections;
 
 public class Beelzebub : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private float speed = 2.0f;
-    private float moveInterval = 2.0f; // Time between movement changes
-    private bool facingRight = true;
-    private float nextMovementTime = 0.0f; // Time of next movement change
-    private Animator animator;
+    [SerializeField] private float movementSpeed = 5f;
+    private SpriteRenderer sr;
 
-    void Start()
+    [SerializeField] private Transform[] waypoints;
+    private int currentWaypointIndex = 0;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private bool isDead = false;
+
+    private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        nextMovementTime = Time.time + moveInterval;
     }
-
-    void Update()
+    private void Update()
     {
-        if (Time.time >= nextMovementTime)
+        if (isDead) return;
+
+        if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < 0.5f)
         {
-            MoveRandomly();
-            FlipFacingDirection();
-            nextMovementTime = Time.time + moveInterval;
+            currentWaypointIndex++;
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex = 0;
+            }
         }
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, movementSpeed * Time.deltaTime);
+
+        if (waypoints[currentWaypointIndex].transform.position.x > transform.position.x)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+
     }
 
-    private void MoveRandomly()
-    {
-        float direction = Random.Range(-1.0f, 1.0f);
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
-    }
-
-    private void FlipFacingDirection()
-    {
-        if (rb.velocity.x < 0 && facingRight)
-        {
-            transform.rotation = Quaternion.Euler(0, 180f, 0f);
-            facingRight = false;
-        }
-        else if (rb.velocity.x > 0 && !facingRight)
-        {
-            transform.rotation = Quaternion.Euler(0, 0f, 0f);
-            facingRight = true;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.Play("Death");
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            GetComponent<Collider2D>().enabled = false;
-            collision.gameObject.GetComponent<Player>().DestroyAndRespawn();
-            DestroyEnemy();
-        }
-    }
+            float yOffset = collision.transform.position.y - transform.position.y;
+            if (yOffset > 0.1f)
+            {
+                animator.Play("Death");
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                GetComponent<Collider2D>().enabled = false;
+                isDead = true;
 
-    public void DestroyEnemy()
-    {
-        Destroy(gameObject);
+                collision.gameObject.GetComponent<Player>().GetEnemyKillCount += 1;
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Player>().DestroyAndRespawn();
+            }
+        }
     }
 }

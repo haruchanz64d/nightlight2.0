@@ -5,9 +5,11 @@ using System.IO;
 using System.Collections;
 public class Player : MonoBehaviour
 {
+    #region Debug Flags
+    private bool isDebugEnabled = false;
+    #endregion
     #region Random Variables
     private Vector3 lastCheckpointPosition;
-
     public Vector3 GetLastCheckpointPosition
     {
         get
@@ -82,7 +84,6 @@ public class Player : MonoBehaviour
     #region Managers
     private GameManager gameManager;
     private AchievementManager achievementManager;
-    private CheckpointSystem checkpointSystem;
     #endregion
 
     #region Movement Variables
@@ -263,13 +264,12 @@ public class Player : MonoBehaviour
     #region Unity MonoBehaviour functions
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         trailRenderer = GetComponent<TrailRenderer>();
-        box = GetComponent<BoxCollider2D>();
+        box = GetComponentInChildren<BoxCollider2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         achievementManager = FindObjectOfType<AchievementManager>();
-        checkpointSystem = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<CheckpointSystem>();
         CreatePlayerStatsJSON();
         int totalLightOrb = lightOrbCounter + hiddenLightOrbCounter;
 
@@ -300,6 +300,7 @@ public class Player : MonoBehaviour
     {
         if (gameManager.IsGamePaused == true) return;
         HandleInput();
+
         FlipAndAnimate();
 
         currentIdleTimer = Time.time - lastInputTime;
