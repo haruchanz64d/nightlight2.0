@@ -12,19 +12,19 @@ public class Magus : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [Header("HP Drain")]
-    private float hpDrainDMG = 1.5f;
-    private float hpDrainTickInterval = 2.0f;
+    private float hpDrainDMG = 0.5f;
+    private float hpDrainTickInterval = 2.5f;
     private float hpDrainTimer = 0f;
     [Header("Movement")]
-    private bool isMovingRight = true;
-    private float movementSpeed = 2f;
+    private float movementSpeed = 2.5f;
     private float summonInterval = 5f;
     private float summonTimer = 0f;
-    private float minX = -5f;
-    private float maxX = 5f;
+    [SerializeField] private Transform[] waypoints;
+    private int currentWaypointIndex;
     [SerializeField] private SceneHandler sceneHandler;
     [SerializeField] private GameObject darkOrbPrefab;
-    [SerializeField] private Transform[] darkOrbSpawnpoint;
+    [SerializeField] private Transform[] darkOrbSpawnpoints;
+    [SerializeField] private GameObject scuttlePrefab;
 
     private void Awake()
     {
@@ -42,29 +42,24 @@ public class Magus : MonoBehaviour
         }
 
         HPDrainOnUpdate();
-
         HandleMovement();
     }
 
     private void HandleMovement()
     {
-        if (isMovingRight)
-        {
-            transform.Translate(Vector3.right * movementSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector3.left * movementSpeed * Time.deltaTime);
-        }
+        float adjustedMovementSpeed = movementSpeed;
 
-        if (transform.position.x >= maxX)
+        adjustedMovementSpeed += (maxHealth - currentHealth) * 0.05f;
+
+        if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < 0.5f)
         {
-            isMovingRight = false;
+            currentWaypointIndex++;
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex = 0;
+            }
         }
-        else if (transform.position.x <= minX)
-        {
-            isMovingRight = true;
-        }
+        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, adjustedMovementSpeed * Time.deltaTime);
 
         summonTimer += Time.deltaTime;
         if (summonTimer >= summonInterval)
@@ -78,9 +73,31 @@ public class Magus : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         animator.Play("Attack");
-        int randomIndex = Random.Range(0, darkOrbSpawnpoint.Length);
-        Transform chosenSpawnpoint = darkOrbSpawnpoint[randomIndex];
+
+        int randomSpawnIndex = Random.Range(0, darkOrbSpawnpoints.Length);
+        Transform chosenSpawnpoint = darkOrbSpawnpoints[randomSpawnIndex];
         Instantiate(darkOrbPrefab, chosenSpawnpoint.position, Quaternion.identity);
+
+        if (currentHealth <= 50f)
+        {
+            int numberOfOrbs = Random.Range(0, darkOrbSpawnpoints.Length);
+            for (int i = 0; i < numberOfOrbs; i++)
+            {
+                darkOrbPrefab.GetComponent<Rigidbody2D>().gravityScale *= 2f;
+                int randomIndex = Random.Range(0, darkOrbSpawnpoints.Length);
+                Transform spawnPoint = darkOrbSpawnpoints[randomIndex];
+                Instantiate(darkOrbPrefab, spawnPoint.position, Quaternion.identity);
+            }
+
+            int numberOfScuttles = Random.Range(1, 5);
+            for (int i = 0; i < numberOfScuttles; i++)
+            {
+                Vector2 randomPosition = new Vector2(transform.position.x + Random.Range(-5f, 5f), transform.position.y + Random.Range(2f, 4f));
+                Instantiate(scuttlePrefab, randomPosition, Quaternion.identity);
+            }
+            summonInterval *= 0.5f;
+        }
+        summonTimer = Mathf.RoundToInt(summonTimer);
     }
 
     private void HPDrainOnUpdate()
@@ -94,7 +111,6 @@ public class Magus : MonoBehaviour
             hpDrainTimer = 0f;
         }
     }
-
     public void DestroyMagus()
     {
         StartCoroutine(PlayAnimationBeforeDestroy());
