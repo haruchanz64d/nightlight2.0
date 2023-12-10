@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StoryTrigger : MonoBehaviour
 {
-    [SerializeField]
     private string chapterName;
     private Player player;
 
@@ -38,7 +37,7 @@ public class StoryTrigger : MonoBehaviour
                     case "ChapterFive":
                         other.GetComponent<Player>().IsChapterFiveCompleted = true;
                         break;
-                    case "Chapter6":
+                    case "Epilogue":
                         other.GetComponent<Player>().IsEpilogueCompleted = true;
                         break;
                 }
@@ -53,7 +52,6 @@ public class StoryTrigger : MonoBehaviour
 
     private bool IsAllChaptersCompleted()
     {
-        // Check if all boolean flags are true
         return player.IsPrologueCompleted &&
                player.IsChapterOneCompleted &&
                player.IsChapterTwoCompleted &&

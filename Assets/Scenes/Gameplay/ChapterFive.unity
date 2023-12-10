@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 1410578000021441796, guid: 5c22dfdcc898e574891d25ec949ec8b5,
         type: 3}
       propertyPath: sceneToLoad
-      value: Chapter6
+      value: Epilogue
       objectReference: {fileID: 0}
     - target: {fileID: 1410578000021441798, guid: 5c22dfdcc898e574891d25ec949ec8b5,
         type: 3}
@@ -13958,7 +13958,7 @@ GameObject:
   - component: {fileID: 2081738683}
   - component: {fileID: 2081738682}
   m_Layer: 3
-  m_Name: Tower
+  m_Name: Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

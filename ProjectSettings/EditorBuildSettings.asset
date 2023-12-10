@@ -5,28 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 8ddcf36b5e8b2134f83268f9e18fde41
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/Prologue.unity
     guid: e6afcf203a8d93e42855d7f61e30e928
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/ChapterOne.unity
     guid: b90222b764a7dda4082bbcf416b6be25
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/ChapterTwo.unity
     guid: cd3e32a735d426a42b9d82838055e26e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/ChapterThree.unity
     guid: 1f9a40b9d6351b043bdea987b8682bc0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/ChapterFour.unity
     guid: edef9f7adc7f3a248a5d06d77655335a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Gameplay/ChapterFive.unity
     guid: e90cbe31ccef84142a4d7c81b4466a8b
   - enabled: 1
+    path: Assets/Scenes/Gameplay/Epilogue.unity
+    guid: 3ac848a55f5733240bcc435860d8da29
+  - enabled: 0
     path: Assets/Scenes/PersistentGameplayScene.unity
     guid: 66832e178ed9c1b49bbc217c637a5666
   m_configObjects: {}

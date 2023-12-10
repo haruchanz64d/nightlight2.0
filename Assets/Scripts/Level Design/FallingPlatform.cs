@@ -31,7 +31,12 @@ namespace LunarflyArts
             rb.bodyType = RigidbodyType2D.Dynamic;
             yield return new WaitForSeconds(destroyDelay);
             Destroy(gameObject);
+            
+            fallingPlatformPrefab.GetComponent<BoxCollider2D>().enabled = true;
+            fallingPlatformPrefab.GetComponent<FallingPlatform>().enabled = true;
+
             Instantiate(fallingPlatformPrefab, initPosition, Quaternion.identity);
+
         }
     }
 }
