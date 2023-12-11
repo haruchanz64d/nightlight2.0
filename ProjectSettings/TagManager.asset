@@ -17,6 +17,7 @@ TagManager:
   - Dark Orb
   - SceneHandler
   - Checkpoint
+  - StoryTrigger
   layers:
   - Default
   - TransparentFX

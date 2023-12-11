@@ -457,6 +457,12 @@ public class Player : MonoBehaviour
             collision.GetComponent<SceneHandler>().LoadScene();
         }
 
+        if (collision.gameObject.CompareTag("StoryTrigger"))
+        {
+            Debug.Log("Collided with Story Trigger!");
+            collision.GetComponent<StoryTrigger>().LoadChapterAchievement();
+        }
+
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
             if (isInteractedOnce) return;

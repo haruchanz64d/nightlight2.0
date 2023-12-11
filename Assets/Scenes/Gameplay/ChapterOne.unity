@@ -1775,7 +1775,7 @@ PrefabInstance:
     - target: {fileID: 1410578000021441798, guid: 5c22dfdcc898e574891d25ec949ec8b5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1410578000021441798, guid: 5c22dfdcc898e574891d25ec949ec8b5,
         type: 3}
@@ -3430,6 +3430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4235181218485567783, guid: f8fd48266a41e0f44aae95e3345133de,
+        type: 3}
+      propertyPath: chapterName
+      value: ChapterOne
       objectReference: {fileID: 0}
     - target: {fileID: 4235181218485567786, guid: f8fd48266a41e0f44aae95e3345133de,
         type: 3}

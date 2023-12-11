@@ -2,51 +2,59 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StoryTrigger : MonoBehaviour
 {
-    private string chapterName;
+    [SerializeField] private string chapterName;
     private Player player;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void LoadChapterAchievement()
     {
-        if (other.CompareTag("Player"))
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == chapterName)
         {
-            string currentSceneName = SceneManager.GetActiveScene().name;
-
-            if (currentSceneName == chapterName)
+            switch (chapterName)
             {
-                switch (chapterName)
-                {
-                    case "Prologue":
-                        other.GetComponent<Player>().IsPrologueCompleted = true;
-                        break;
-                    case "ChapterOne":
-                        other.GetComponent<Player>().IsChapterOneCompleted = true;
-                        break;
-                    case "ChapterTwo":
-                        other.GetComponent<Player>().IsChapterTwoCompleted = true;
-                        break;
-                    case "ChapterThree":
-                        other.GetComponent<Player>().IsChapterThreeCompleted = true;
-                        break;
-                    case "ChapterFour":
-                        other.GetComponent<Player>().IsChapterFourCompleted = true;
-                        break;
-                    case "ChapterFive":
-                        other.GetComponent<Player>().IsChapterFiveCompleted = true;
-                        break;
-                    case "Epilogue":
-                        other.GetComponent<Player>().IsEpilogueCompleted = true;
-                        break;
-                }
-
-                if (IsAllChaptersCompleted())
-                {
-                    other.GetComponent<Player>().IsGameCompleted = true;
-                }
+                case "Prologue":
+                    player.IsPrologueCompleted = true;
+                    Debug.Log($"Prologue completed: {player.IsPrologueCompleted}");
+                    break;
+                case "ChapterOne":
+                    player.IsChapterOneCompleted = true;
+                    Debug.Log($"Chapter One completed: {player.IsChapterOneCompleted}");
+                    break;
+                case "ChapterTwo":
+                    player.IsChapterTwoCompleted = true;
+                    Debug.Log($"Chapter Two completed: {player.IsChapterTwoCompleted}");
+                    break;
+                case "ChapterThree":
+                    player.IsChapterThreeCompleted = true;
+                    Debug.Log($"Chapter Three completed: {player.IsChapterThreeCompleted}");
+                    break;
+                case "ChapterFour":
+                    player.IsChapterFourCompleted = true;
+                    Debug.Log($"Chapter Four completed: {player.IsChapterFourCompleted}");
+                    break;
+                case "ChapterFive":
+                    player.IsChapterFiveCompleted = true;
+                    Debug.Log($"Chapter Five completed: {player.IsChapterFiveCompleted}");
+                    break;
+                case "Epilogue":
+                    player.IsEpilogueCompleted = true;
+                    Debug.Log($"Chapter Epilogue completed: {player.IsEpilogueCompleted}");
+                    break;
             }
+
+            if (IsAllChaptersCompleted())
+            {
+                player.IsGameCompleted = true;
+            }
+        }
+        else
+        {
+            Debug.Log("Invalid chapter name, mismatched to scene name!");
         }
     }
 

@@ -23,6 +23,7 @@ public class Magus : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     private int currentWaypointIndex;
     [SerializeField] private SceneHandler sceneHandler;
+    [SerializeField] private StoryTrigger storyTrigger;
     [SerializeField] private GameObject darkOrbPrefab;
     [SerializeField] private Transform[] darkOrbSpawnpoints;
 
@@ -112,6 +113,7 @@ public class Magus : MonoBehaviour
         StartCoroutine(PlayAnimationBeforeDestroy());
         player.IsMagusDefeated = true;
         Destroy(gameObject);
+        player.GetComponent<Player>().IsChapterFiveCompleted = true;
         sceneHandler.LoadScene();
     }
 
