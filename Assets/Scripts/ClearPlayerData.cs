@@ -1,6 +1,6 @@
 using System.IO;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ClearPlayerData : MonoBehaviour
 {
     public static void ClearPlayerPrefs()
