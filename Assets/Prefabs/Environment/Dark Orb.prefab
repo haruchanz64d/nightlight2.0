@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 204175498931883392}
   - component: {fileID: 204175498931883398}
   - component: {fileID: 204175498931883399}
+  - component: {fileID: 2306634925820547072}
   m_Layer: 0
   m_Name: Dark Orb
   m_TagString: Dark Orb
@@ -120,5 +121,22 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2306634925820547072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204175498931883395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed2fdfc3bef32f43af2e542e73eac91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 64
+  scuttlePrefab: {fileID: 1537195524623204270, guid: ec897c32bff184b40bbd0656b4243734,
+    type: 3}

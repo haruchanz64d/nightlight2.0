@@ -1,15 +1,42 @@
-﻿using UnityEngine;
+﻿#region Note
+/*
+ * Player.cs
+ * Author: Haru Dev
+ * 
+ * Disclaimer: I know what you thinking, why I would cram all these functions in a single class instead of having multiple classes? 
+ * Easy answer, I can debug it freely rather than having multiple classes. I know it's a bad practice but if it works, it works.
+ * 
+ * This class handles the following:
+ * 1. Checkpoint Variables - Checkpoint variables store the player's current progress in the game.
+ * 2. Singleton Pattern - The Singleton pattern ensures only one instance of the Player class exists.
+ * 3. PlayerPrefs Keys - PlayerPrefs keys are used to store player data persistently.
+ * 4. Player Stats - Player stats track the player's progress.
+ * 5. Managers - Managers handle different aspects of the game.
+ * 6. Movement Variables - Movement variables control the player's movement speed and direction.
+ * 7. Getters and Setters - Getters and setters allow other classes to access and modify player data.
+ * 8. Chapter Flags - Chapter flags indicate whether the player has completed specific chapters in the game.
+ * 9. Chapter Getters and Setters - Chapter getters and setters allow other classes to access and modify chapter data.
+ * 10. Unity MonoBehaviour Functions - Unity MonoBehaviour functions are used to interact with Unity game engine events.
+ * 11. Movement - Movement functions control how the player moves around the game world.
+ * 12. Dashing - Dashing functions enable the player to perform a short burst of speed.
+ * 13. Animation - Animation functions control the player's animations.
+ * 14. Triggers - Triggers are used to detect when the player enters or exits specific areas.
+ * 15. Death Logic - Death logic handles what happens when the player dies.
+ * 16. Achivement Collection - Achievement collection tracks the player's progress towards unlocking achievements.
+ * 17. Achievement Functions - Achievement functions handle unlocking and rewarding achievements.
+ * 18. Create, Save and Load to JSON - Achievement functions handle unlocking and rewarding achievements.
+ */
+#endregion
+#region Packages
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.IO;
 using System.Collections;
+#endregion
 public class Player : MonoBehaviour
 {
-    #region Gameplay Flags
-    private bool isDead = false;
-    #endregion
-
-    #region Random Variables
+    #region Checkpoint Variables
     private Vector3 lastCheckpointPosition;
     public Vector3 GetLastCheckpointPosition
     {
@@ -102,7 +129,7 @@ public class Player : MonoBehaviour
     private float dashingCooldown = 1f;
     #endregion
 
-    #region Getters & Setters
+    #region Getters and Setters
     public int GetJumpCount
     {
         get
@@ -198,7 +225,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region Chapter Progress
+    #region Chapter Flags
     private bool isPrologueCompleted;
     private bool isChapterOneCompleted;
     private bool isChapterTwoCompleted;
@@ -209,7 +236,7 @@ public class Player : MonoBehaviour
     private bool isGameCompleted;
     #endregion
 
-    #region Chapter Getter And Setter
+    #region Chapter Getters and Setters
     public bool IsPrologueCompleted
     {
         get { return isPrologueCompleted; }
@@ -299,11 +326,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (isDead) return;
         if (gameManager.IsGamePaused == true) return;
-        HandleInput();
 
         FlipAndAnimate();
+        HandleInput();
 
         currentIdleTimer = Time.time - lastInputTime;
 
@@ -317,7 +343,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead) return;
         rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
     }
 
@@ -331,6 +356,7 @@ public class Player : MonoBehaviour
     private void HandleInput()
     {
         if (isDashing) return;
+
         movement = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.C) && IsGrounded())
@@ -448,7 +474,6 @@ public class Player : MonoBehaviour
     #region Death Logic
     public void DestroyAndRespawn()
     {
-        isDead = true;
         SavePlayerStats();
         rb.bodyType = RigidbodyType2D.Static;
         animator.Play("Death");
@@ -465,7 +490,6 @@ public class Player : MonoBehaviour
     public void ResetLevel()
     {
         animator.Play("Respawn");
-        isDead = false;
         if (isInteractedOnce)
         {
             transform.position = GetLastCheckpointPosition;
@@ -808,7 +832,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region Create, Save and Load
+    #region Create, Save and Load to JSON
     private void CreatePlayerStatsJSON()
     {
         string saveFilePath = Application.persistentDataPath + "/playerStats.json";

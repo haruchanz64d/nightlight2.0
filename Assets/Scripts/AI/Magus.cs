@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Magus : MonoBehaviour
 {
+    private bool isSummoningOrbs;
     private float maxHealth = 100f;
     private float currentHealth;
     [SerializeField] private Image healthBar;
@@ -12,7 +13,7 @@ public class Magus : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     [Header("HP Drain")]
-    private float hpDrainDMG = 1.75f;
+    private float hpDrainDMG = 2.5f;
     private float hpDrainTickInterval = 2.5f;
     private float hpDrainTimer = 0f;
     [Header("Movement")]
@@ -24,7 +25,6 @@ public class Magus : MonoBehaviour
     [SerializeField] private SceneHandler sceneHandler;
     [SerializeField] private GameObject darkOrbPrefab;
     [SerializeField] private Transform[] darkOrbSpawnpoints;
-    [SerializeField] private GameObject scuttlePrefab;
 
     private void Awake()
     {
@@ -71,34 +71,30 @@ public class Magus : MonoBehaviour
 
     private void SummonDarkOrb()
     {
+        StartCoroutine(PlayAttackAnimation());
+
         rb.velocity = Vector2.zero;
-        animator.Play("Attack");
 
-        int randomSpawnIndex = Random.Range(0, darkOrbSpawnpoints.Length);
-        Transform chosenSpawnpoint = darkOrbSpawnpoints[randomSpawnIndex];
-        Instantiate(darkOrbPrefab, chosenSpawnpoint.position, Quaternion.identity);
-
-        if (currentHealth <= 50f)
+        List<int> randomSpawnIndices = new List<int>();
+        for (int i = 0; i < darkOrbSpawnpoints.Length; i++)
         {
-            int numberOfOrbs = Random.Range(0, darkOrbSpawnpoints.Length);
-            for (int i = 0; i < numberOfOrbs; i++)
-            {
-                darkOrbPrefab.GetComponent<Rigidbody2D>().gravityScale *= 2f;
-                int randomIndex = Random.Range(0, darkOrbSpawnpoints.Length);
-                Transform spawnPoint = darkOrbSpawnpoints[randomIndex];
-                Instantiate(darkOrbPrefab, spawnPoint.position, Quaternion.identity);
-            }
-
-            int numberOfScuttles = Random.Range(1, 5);
-            for (int i = 0; i < numberOfScuttles; i++)
-            {
-                Vector2 randomPosition = new Vector2(transform.position.x + Random.Range(-5f, 5f), transform.position.y + Random.Range(2f, 4f));
-                Instantiate(scuttlePrefab, randomPosition, Quaternion.identity);
-            }
-            summonInterval *= 0.5f;
+            randomSpawnIndices.Add(Random.Range(0, darkOrbSpawnpoints.Length));
         }
-        summonTimer = Mathf.RoundToInt(summonTimer);
+
+        int numberOfOrbs = currentHealth <= 50f ? Random.Range(2, 5) : 1;
+
+        for (int i = 0; i < numberOfOrbs; i++)
+        {
+            int randomIndex = randomSpawnIndices[i];
+            Transform spawnPoint = darkOrbSpawnpoints[randomIndex];
+
+            Instantiate(darkOrbPrefab, spawnPoint.position, Quaternion.identity).GetComponent<DarkOrb>().EnableScuttleSpawning = (currentHealth <= 50f);
+        }
+
+        summonTimer = Mathf.FloorToInt(summonTimer * (currentHealth <= 50f ? 0.5f : 1f));
     }
+
+
 
     private void HPDrainOnUpdate()
     {
@@ -117,6 +113,12 @@ public class Magus : MonoBehaviour
         player.IsMagusDefeated = true;
         Destroy(gameObject);
         sceneHandler.LoadScene();
+    }
+
+    private IEnumerator PlayAttackAnimation()
+    {
+        animator.Play("Attack");
+        yield return new WaitForSeconds(1.0f);
     }
 
     private IEnumerator PlayAnimationBeforeDestroy()
