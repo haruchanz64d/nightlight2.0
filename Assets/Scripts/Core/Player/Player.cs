@@ -421,7 +421,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Light Orb"))
         {
             GetLightOrbCounter += 1;
-            collision.gameObject.GetComponent<AudioSource>().Play();
+            collision.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
 
@@ -434,6 +434,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Hidden Light Orb"))
         {
             GetHiddenLightOrbCounter += 1;
+            collision.GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
 
