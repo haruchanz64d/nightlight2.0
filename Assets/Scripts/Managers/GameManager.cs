@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     public void OnPause()
     {
+        if (Input.GetKey(KeyCode.Escape)) OnResume();
+
         Time.timeScale = 0f;
         IsGamePaused = true;
         pauseCanvas.enabled = true;

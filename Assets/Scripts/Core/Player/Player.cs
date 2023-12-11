@@ -364,7 +364,7 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCount++;
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             jumpCount++;
@@ -377,7 +377,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) && canDash)
         {
-            StartCoroutine(HandleDash());
+            //StartCoroutine(HandleDash());
         }
     }
     #endregion
