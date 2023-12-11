@@ -9,4 +9,9 @@ public class SceneHandler : MonoBehaviour
     {
         SceneManager.LoadScene(sceneToLoad);
     }
+
+    public void LoadDebugScene(string debugScene)
+    {
+        SceneManager.LoadScene(debugScene);
+    }
 }

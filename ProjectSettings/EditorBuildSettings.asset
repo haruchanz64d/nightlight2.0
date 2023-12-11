@@ -29,7 +29,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Epilogue.unity
     guid: 3ac848a55f5733240bcc435860d8da29
-  - enabled: 0
-    path: Assets/Scenes/PersistentGameplayScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Debug/DebugTestEnvironment.unity
     guid: 66832e178ed9c1b49bbc217c637a5666
+  - enabled: 1
+    path: Assets/Scenes/Debug/DebugTestEnemyAI.unity
+    guid: 2d59a9c59e64f9d4a85457d2c88b02d4
+  - enabled: 1
+    path: Assets/Scenes/Debug/DebugTestXeroFightEnvironment.unity
+    guid: 41023fdacb9803649b676ba9826ecb60
+  - enabled: 1
+    path: Assets/Scenes/Debug/DebugTestLightOrbEnvironment.unity
+    guid: 8c9a15a0d084c8a4bae7d308076116da
   m_configObjects: {}

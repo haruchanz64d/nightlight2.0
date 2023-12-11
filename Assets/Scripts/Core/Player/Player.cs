@@ -25,6 +25,7 @@
  * 16. Achivement Collection - Achievement collection tracks the player's progress towards unlocking achievements.
  * 17. Achievement Functions - Achievement functions handle unlocking and rewarding achievements.
  * 18. Create, Save and Load to JSON - Achievement functions handle unlocking and rewarding achievements.
+ * 19. Debug Flags - Debug Flags are used to modify behaviour of the Player in debug environment.
  */
 #endregion
 #region Packages

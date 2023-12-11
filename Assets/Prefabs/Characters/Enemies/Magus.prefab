@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3147380706155819760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 7.04, z: 0}
+  m_LocalPosition: {x: -12.920001, y: 3.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056729481011231715}
@@ -454,6 +454,7 @@ MonoBehaviour:
   - {fileID: 6239443035999976819}
   - {fileID: 7234860021936827071}
   sceneHandler: {fileID: 0}
+  storyTrigger: {fileID: 0}
   darkOrbPrefab: {fileID: 204175498931883395, guid: 33d1f6329353e9149a1fb81b235e9324,
     type: 3}
   darkOrbSpawnpoints:
@@ -842,7 +843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314936583731729889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 6.57, z: 0}
+  m_LocalPosition: {x: 12.079999, y: 2.6100001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056729481011231715}
@@ -908,7 +909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7693312658756048832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -12.92, y: -3.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056729481011231715}
@@ -1047,7 +1048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8842405499888476652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalPosition: {x: 12.079999, y: -3.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056729481011231715}
