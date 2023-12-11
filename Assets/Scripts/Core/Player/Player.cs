@@ -359,7 +359,7 @@ public class Player : MonoBehaviour
 
         movement = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.C) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCount++;
