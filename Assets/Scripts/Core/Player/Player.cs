@@ -5,9 +5,10 @@ using System.IO;
 using System.Collections;
 public class Player : MonoBehaviour
 {
-    #region Debug Flags
-    private bool isDebugEnabled = false;
+    #region Gameplay Flags
+    private bool isDead = false;
     #endregion
+
     #region Random Variables
     private Vector3 lastCheckpointPosition;
     public Vector3 GetLastCheckpointPosition
@@ -298,6 +299,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (isDead) return;
         if (gameManager.IsGamePaused == true) return;
         HandleInput();
 
@@ -315,6 +317,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead) return;
         rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
     }
 
@@ -440,16 +443,29 @@ public class Player : MonoBehaviour
     {
         return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 0.1f, layer);
     }
+    #endregion
 
+    #region Death Logic
     public void DestroyAndRespawn()
     {
+        isDead = true;
         SavePlayerStats();
         rb.bodyType = RigidbodyType2D.Static;
+        animator.Play("Death");
+
+        StartCoroutine(RespawnDelay());
+    }
+
+    private IEnumerator RespawnDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
         ResetLevel();
     }
 
     public void ResetLevel()
     {
+        animator.Play("Respawn");
+        isDead = false;
         if (isInteractedOnce)
         {
             transform.position = GetLastCheckpointPosition;
@@ -459,9 +475,9 @@ public class Player : MonoBehaviour
             transform.position = spawnPoint.position;
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
+        animator.SetBool("isIdle", true);
     }
-
-    #endregion
+    #endregion 
 
     #region Achievement Collection
     private void AchivementCollection()
