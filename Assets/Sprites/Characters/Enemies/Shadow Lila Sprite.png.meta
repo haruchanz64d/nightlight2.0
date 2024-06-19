@@ -45,7 +45,7 @@ TextureImporter:
       213: 1194900661391976278
     second: Shadow Lila Sprite_13
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -62,10 +62,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -104,6 +106,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -116,6 +119,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -128,6 +132,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -437,9 +442,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Shadow Lila Sprite_0: 6703580897671325991
+      Shadow Lila Sprite_1: 8250474886847142650
+      Shadow Lila Sprite_10: -3271991409265505379
+      Shadow Lila Sprite_11: -836763856150276817
+      Shadow Lila Sprite_12: 2590976881158420770
+      Shadow Lila Sprite_13: 1194900661391976278
+      Shadow Lila Sprite_2: 1546641770549423801
+      Shadow Lila Sprite_3: 684150540699063120
+      Shadow Lila Sprite_4: 7514098333032190471
+      Shadow Lila Sprite_5: 6755623397393444657
+      Shadow Lila Sprite_6: -4437185544961636033
+      Shadow Lila Sprite_7: -2696589551575280235
+      Shadow Lila Sprite_8: 452445457396964092
+      Shadow Lila Sprite_9: 811373329159750055
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

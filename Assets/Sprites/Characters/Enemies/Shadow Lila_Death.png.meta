@@ -30,7 +30,7 @@ TextureImporter:
       213: 7321349648267844320
     second: Shadow Lila_Death_1
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -47,10 +47,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -89,6 +91,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -101,6 +104,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -113,6 +117,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -134,7 +139,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 54c876593920c08b0800000000000000
-      internalID: -5184766238120244155
+      internalID: -2094150959076172797
       vertices: []
       indices: 
       edges: []
@@ -176,7 +181,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d77c1d9255ded5dc0800000000000000
-      internalID: -3648499173070616707
+      internalID: 3137551524940071776
       vertices: []
       indices: 
       edges: []
@@ -197,7 +202,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5cf0bc0f05bb43cb0800000000000000
-      internalID: -4885073739478528059
+      internalID: -7960502653854313595
       vertices: []
       indices: 
       edges: []
@@ -218,7 +223,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 583957b430d968190800000000000000
-      internalID: -7960502653854313595
+      internalID: -3648499173070616707
       vertices: []
       indices: 
       edges: []
@@ -239,7 +244,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: fa5cafc956e1f42f0800000000000000
-      internalID: -986536371596638801
+      internalID: -4885073739478528059
       vertices: []
       indices: 
       edges: []
@@ -260,7 +265,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 729e8a68bb1600ed0800000000000000
-      internalID: -2449850739243554521
+      internalID: -5184766238120244155
       vertices: []
       indices: 
       edges: []
@@ -317,9 +322,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Shadow Lila_Death_: -4885073739478528059
+      Shadow Lila_Death_1: 7321349648267844320
+      Shadow Lila_Death_2: -3648499173070616707
+      Shadow Lila_Death_3: -5184766238120244155
+      Shadow Lila_Death_4: -2094150959076172797
+      Shadow Lila_Death_5: 6111703551469434951
+      Shadow Lila_Death_6: -134230100152161058
+      Shadow Lila_Death_7: 3137551524940071776
+      Shadow Lila_Death_8: -7960502653854313595
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
